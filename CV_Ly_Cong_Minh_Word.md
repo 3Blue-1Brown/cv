@@ -85,22 +85,7 @@ Sinh viên năm cuối chuyên ngành Công nghệ thông tin có nền tảng t
 
 ---
 
-### Dự án 2: Ứng Dụng Quản Lý Sinh Viên
-- **Thời gian thực hiện:** [CẦN BỔ SUNG THỜI GIAN]
-- **Tình trạng:** [Dự án học tập]
-- **Mục tiêu:** Xây dựng ứng dụng quản lý hồ sơ và thông tin điểm số của sinh viên với các thao tác dữ liệu cơ bản.
-- **Công nghệ sử dụng:** Python hoặc Kotlin (Android), SQLite.
-- **Chức năng chính:**
-  1. Thêm mới sinh viên vào danh sách (Mã SV, họ tên, lớp, chuyên ngành, điểm số).
-  2. Hiển thị danh sách sinh viên dưới dạng bảng trực quan.
-  3. Tìm kiếm sinh viên theo tên hoặc mã số sinh viên.
-  4. Chỉnh sửa thông tin và xóa sinh viên khỏi cơ sở dữ liệu.
-- **Vai trò & Phần việc đảm nhận:** Thiết kế giao diện thao tác, viết các câu lệnh truy vấn SQL tương tác với SQLite và xử lý ngoại lệ khi nhập dữ liệu.
-- **Link mã nguồn GitHub:** [CẦN BỔ SUNG LINK GITHUB NẾU CÓ]
-
----
-
-### Dự án 3: Website Portfolio Cá Nhân & Giới Thiệu Bản Thân
+### Dự án 2: Website Portfolio Cá Nhân & Giới Thiệu Bản Thân
 - **Thời gian thực hiện:** [CẦN BỔ SUNG THỜI GIAN]
 - **Tình trạng:** [Đang hoạt động]
 - **Mục tiêu:** Xây dựng trang hồ sơ năng lực trực tuyến để giới thiệu kỹ năng và các dự án cá nhân đến nhà tuyển dụng.
