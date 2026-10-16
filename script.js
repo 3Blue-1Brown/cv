@@ -1,7 +1,7 @@
 /**
  * CV LỲ CÔNG MINH - INTERACTIVE LOGIC
  * Features: Dark/Light Mode toggle, Print/Export PDF A4, Share link with Toast,
- * and Optional Avatar Photo Upload/Reset.
+ * and Persistent Avatar Photo (LocalStorage & optional avatar.jpg file).
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (navigator.share) {
         try {
           await navigator.share({
-            title: 'Lỳ Công Minh — IT Intern / Junior Web Developer',
+            title: 'Lỳ Công Minh — Junior Full Stack Web Developer',
             text: 'Hồ sơ CV của Lỳ Công Minh',
             url: currentUrl
           });
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* --------------------------------------------------
-     4. TẢI ẢNH CHÂN DUNG TRÒN & GỠ ẢNH
+     4. TẢI, LƯU VÀ KHÔI PHỤC ẢNH ĐẠI DIỆN (LOCALSTORAGE & FILE)
      -------------------------------------------------- */
   const avatarCircle = document.getElementById('avatarCircle');
   const avatarUploadBtn = document.getElementById('avatarUploadBtn');
@@ -79,19 +79,48 @@ document.addEventListener('DOMContentLoaded', () => {
   const avatarImg = document.getElementById('avatarImg');
   const avatarBtnText = document.getElementById('avatarBtnText');
 
+  const STORAGE_KEY = 'lycongminh_avatar_data';
   let hasCustomPhoto = false;
+
+  function setAvatarDisplay(imageSrc) {
+    if (!avatarImg || !avatarPlaceholder) return;
+    avatarImg.src = imageSrc;
+    avatarImg.classList.remove('hidden');
+    avatarPlaceholder.classList.add('hidden');
+    hasCustomPhoto = true;
+    if (avatarBtnText) avatarBtnText.textContent = 'Đổi / Gỡ ảnh';
+  }
+
+  function clearAvatarDisplay() {
+    if (!avatarImg || !avatarPlaceholder) return;
+    avatarImg.src = '';
+    avatarImg.classList.add('hidden');
+    avatarPlaceholder.classList.remove('hidden');
+    hasCustomPhoto = false;
+    if (avatarBtnText) avatarBtnText.textContent = 'Chọn ảnh';
+    if (avatarFileInput) avatarFileInput.value = '';
+    localStorage.removeItem(STORAGE_KEY);
+  }
+
+  // Khôi phục ảnh đã lưu từ LocalStorage khi mở trang
+  const savedAvatar = localStorage.getItem(STORAGE_KEY);
+  if (savedAvatar) {
+    setAvatarDisplay(savedAvatar);
+  } else {
+    // Nếu chưa lưu trong LocalStorage, thử kiểm tra file tĩnh avatar.jpg hoặc avatar.png trong thư mục
+    const testImg = new Image();
+    testImg.onload = () => {
+      setAvatarDisplay(testImg.src);
+    };
+    testImg.src = 'avatar.jpg';
+  }
 
   function triggerAvatarUpload() {
     if (hasCustomPhoto) {
-      const confirmRemove = confirm('Bạn có muốn gỡ ảnh thẻ hiện tại không?');
+      const confirmRemove = confirm('Bạn có muốn gỡ ảnh đại diện hiện tại không?');
       if (confirmRemove) {
-        avatarImg.src = '';
-        avatarImg.classList.add('hidden');
-        avatarPlaceholder.classList.remove('hidden');
-        hasCustomPhoto = false;
-        if (avatarBtnText) avatarBtnText.textContent = 'Chọn ảnh';
-        avatarFileInput.value = '';
-        showToast('Đã để trống khung ảnh');
+        clearAvatarDisplay();
+        showToast('Đã xóa ảnh và để trống khung ảnh');
       } else {
         avatarFileInput.click();
       }
@@ -108,26 +137,64 @@ document.addEventListener('DOMContentLoaded', () => {
     avatarUploadBtn.addEventListener('click', triggerAvatarUpload);
   }
 
+  // Tối ưu và nén ảnh bằng Canvas trước khi lưu vào LocalStorage
   if (avatarFileInput) {
     avatarFileInput.addEventListener('change', (e) => {
       const file = e.target.files && e.target.files[0];
-      if (file) {
-        if (!file.type.startsWith('image/')) {
-          showToast('Vui lòng chọn tệp hình ảnh hợp lệ (jpg, png, webp)');
-          return;
-        }
+      if (!file) return;
 
-        const reader = new FileReader();
-        reader.onload = (event) => {
-          avatarImg.src = event.target.result;
-          avatarImg.classList.remove('hidden');
-          avatarPlaceholder.classList.add('hidden');
-          hasCustomPhoto = true;
-          if (avatarBtnText) avatarBtnText.textContent = 'Đổi / Gỡ ảnh';
-          showToast('Đã tải ảnh chân dung lên thành công!');
-        };
-        reader.readAsDataURL(file);
+      if (!file.type.startsWith('image/')) {
+        showToast('Vui lòng chọn tệp hình ảnh hợp lệ (jpg, png, webp)');
+        return;
       }
+
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const rawSrc = event.target.result;
+        const img = new Image();
+
+        img.onload = () => {
+          // Resize ảnh về kích thước tối đa 400x400 để tiết kiệm bộ nhớ LocalStorage (~40KB-70KB)
+          const canvas = document.createElement('canvas');
+          const MAX_SIZE = 400;
+          let width = img.width;
+          let height = img.height;
+
+          if (width > height) {
+            if (width > MAX_SIZE) {
+              height = Math.round((height * MAX_SIZE) / width);
+              width = MAX_SIZE;
+            }
+          } else {
+            if (height > MAX_SIZE) {
+              width = Math.round((width * MAX_SIZE) / height);
+              height = MAX_SIZE;
+            }
+          }
+
+          canvas.width = width;
+          canvas.height = height;
+
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, width, height);
+
+          // Chuyển thành chuỗi Base64 định dạng JPEG chất lượng cao
+          const optimizedDataUrl = canvas.toDataURL('image/jpeg', 0.88);
+
+          try {
+            localStorage.setItem(STORAGE_KEY, optimizedDataUrl);
+          } catch (storageErr) {
+            console.warn('LocalStorage đầy hoặc không khả dụng:', storageErr);
+          }
+
+          setAvatarDisplay(optimizedDataUrl);
+          showToast('Đã tải và lưu ảnh thẻ thành công!');
+        };
+
+        img.src = rawSrc;
+      };
+
+      reader.readAsDataURL(file);
     });
   }
 
