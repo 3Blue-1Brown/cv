@@ -1,24 +1,23 @@
 /**
- * CV LÝ CÔNG MINH - INTERACTIVE LOGIC
- * Features: Dark/Light Mode toggle, Print/Export PDF, Share link with Toast,
+ * CV LỲ CÔNG MINH - INTERACTIVE LOGIC
+ * Features: Dark/Light Mode toggle, Print/Export PDF A4, Share link with Toast,
  * and Optional Avatar Photo Upload/Reset.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize Lucide Icons
+  // Khởi tạo Lucide Icons
   if (typeof lucide !== 'undefined') {
     lucide.createIcons();
   }
 
   /* --------------------------------------------------
-     1. THEME TOGGLE (LIGHT / DARK)
-     Default: 'light' (dễ nhìn, trang nhã, sắc nét)
+     1. CHUYỂN ĐỔI GIAO DIỆN SÁNG / TỐI (LIGHT / DARK)
+     Mặc định: 'light' (chuẩn mực theo ảnh mẫu)
      -------------------------------------------------- */
   const themeToggleBtn = document.getElementById('themeToggleBtn');
   const htmlRoot = document.documentElement;
 
-  // Retrieve saved theme or default to 'light'
-  const savedTheme = localStorage.getItem('minh_cv_theme') || 'light';
+  const savedTheme = localStorage.getItem('lycongminh_cv_theme') || 'light';
   htmlRoot.setAttribute('data-theme', savedTheme);
 
   if (themeToggleBtn) {
@@ -27,9 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const newTheme = currentTheme === 'light' ? 'dark' : 'light';
 
       htmlRoot.setAttribute('data-theme', newTheme);
-      localStorage.setItem('minh_cv_theme', newTheme);
+      localStorage.setItem('lycongminh_cv_theme', newTheme);
 
-      // Re-trigger icon render if needed
       if (typeof lucide !== 'undefined') lucide.createIcons();
 
       showToast(`Đã chuyển sang giao diện ${newTheme === 'dark' ? 'Tối' : 'Sáng'}`);
@@ -37,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* --------------------------------------------------
-     2. EXPORT / PRINT PDF
+     2. XUẤT FILE PDF / IN ẤN CHUẨN A4
      -------------------------------------------------- */
   const printBtn = document.getElementById('printBtn');
   if (printBtn) {
@@ -47,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* --------------------------------------------------
-     3. SHARE CV LINK
+     3. CHIA SẺ LIÊN KẾT CV
      -------------------------------------------------- */
   const shareBtn = document.getElementById('shareBtn');
   if (shareBtn) {
@@ -57,13 +55,13 @@ document.addEventListener('DOMContentLoaded', () => {
       if (navigator.share) {
         try {
           await navigator.share({
-            title: 'Lý Công Minh — Backend / Fullstack Developer',
-            text: 'Xem CV của Lý Công Minh',
+            title: 'Lỳ Công Minh — IT Intern / Junior Web Developer',
+            text: 'Hồ sơ CV của Lỳ Công Minh',
             url: currentUrl
           });
           return;
         } catch (err) {
-          // Fallback to clipboard if user cancels or browser rejects
+          // Bỏ qua nếu người dùng hủy
         }
       }
 
@@ -72,12 +70,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* --------------------------------------------------
-     4. OPTIONAL AVATAR UPLOAD & RESET
+     4. TẢI ẢNH CHÂN DUNG TRÒN & GỠ ẢNH
      -------------------------------------------------- */
-  const avatarWrapper = document.getElementById('avatarWrapper');
+  const avatarCircle = document.getElementById('avatarCircle');
   const avatarUploadBtn = document.getElementById('avatarUploadBtn');
   const avatarFileInput = document.getElementById('avatarFileInput');
-  const avatarMonogram = document.getElementById('avatarMonogram');
+  const avatarPlaceholder = document.getElementById('avatarPlaceholder');
   const avatarImg = document.getElementById('avatarImg');
   const avatarBtnText = document.getElementById('avatarBtnText');
 
@@ -85,16 +83,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function triggerAvatarUpload() {
     if (hasCustomPhoto) {
-      // Toggle back to monogram or allow re-upload
-      const confirmRemove = confirm('Bạn có muốn gỡ ảnh đại diện và quay về chữ viết tắt tối giản không?');
+      const confirmRemove = confirm('Bạn có muốn gỡ ảnh thẻ hiện tại không?');
       if (confirmRemove) {
         avatarImg.src = '';
         avatarImg.classList.add('hidden');
-        avatarMonogram.classList.remove('hidden');
+        avatarPlaceholder.classList.remove('hidden');
         hasCustomPhoto = false;
-        if (avatarBtnText) avatarBtnText.textContent = 'Thêm ảnh';
+        if (avatarBtnText) avatarBtnText.textContent = 'Chọn ảnh';
         avatarFileInput.value = '';
-        showToast('Đã quay về chữ viết tắt tối giản');
+        showToast('Đã để trống khung ảnh');
       } else {
         avatarFileInput.click();
       }
@@ -103,8 +100,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  if (avatarWrapper) {
-    avatarWrapper.addEventListener('click', triggerAvatarUpload);
+  if (avatarCircle) {
+    avatarCircle.addEventListener('click', triggerAvatarUpload);
   }
 
   if (avatarUploadBtn) {
@@ -116,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const file = e.target.files && e.target.files[0];
       if (file) {
         if (!file.type.startsWith('image/')) {
-          showToast('Vui lòng chọn tệp hình ảnh hợp lệ');
+          showToast('Vui lòng chọn tệp hình ảnh hợp lệ (jpg, png, webp)');
           return;
         }
 
@@ -124,10 +121,10 @@ document.addEventListener('DOMContentLoaded', () => {
         reader.onload = (event) => {
           avatarImg.src = event.target.result;
           avatarImg.classList.remove('hidden');
-          avatarMonogram.classList.add('hidden');
+          avatarPlaceholder.classList.add('hidden');
           hasCustomPhoto = true;
           if (avatarBtnText) avatarBtnText.textContent = 'Đổi / Gỡ ảnh';
-          showToast('Đã tải ảnh đại diện lên thành công!');
+          showToast('Đã tải ảnh chân dung lên thành công!');
         };
         reader.readAsDataURL(file);
       }
@@ -135,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* --------------------------------------------------
-     5. TOAST & CLIPBOARD HELPER FUNCTIONS
+     5. TOAST & CLIPBOARD HELPER
      -------------------------------------------------- */
   let toastTimer = null;
 
@@ -178,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.removeChild(textArea);
       showToast(successMessage || 'Đã sao chép!');
     } catch (err) {
-      showToast('Không thể sao chép, vui lòng sao chép thủ công');
+      showToast('Không thể sao chép tự động');
     }
   }
 });

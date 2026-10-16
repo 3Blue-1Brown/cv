@@ -5,16 +5,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="CV Lý Công Minh - Backend & Fullstack Developer Fresher. Tốt nghiệp UIT - ĐHQG TP.HCM (GPA 3.6/4.0), AWS Certified.">
-  <meta name="keywords" content="Lý Công Minh, CV, Resume, Backend Developer, Fullstack, Java, Spring Boot, NestJS, React">
-  <meta name="author" content="Lý Công Minh">
-  <title>Lý Công Minh — Backend & Fullstack Developer | CV</title>
+    content="CV Lỳ Công Minh - IT Intern / Junior Web Developer / Nhân viên IT. Tốt nghiệp ĐH Công nghệ Thông tin & Truyền thông - ĐH Thái Nguyên (ICTU).">
+  <meta name="keywords" content="Lỳ Công Minh, CV, IT Intern, Junior Web Developer, HTML, CSS, JavaScript, SQL, Python, Kotlin">
+  <meta name="author" content="Lỳ Công Minh">
+  <title>Lỳ Công Minh — IT Intern / Junior Web Developer | CV</title>
 
-  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <!-- Google Fonts: Be Vietnam Pro & Lexend (Font chuẩn hiện đại hỗ trợ tiếng Việt tuyệt đối như ảnh mẫu) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Lexend:wght@400;500;600;700;800&display=swap"
     rel="stylesheet">
 
   <!-- Lucide Icons -->
@@ -25,12 +25,12 @@
 </head>
 
 <body>
-  <!-- Floating Top Control Bar (Hidden when printing) -->
+  <!-- Top Action Bar (Không hiển thị khi in) -->
   <header class="top-bar no-print">
     <div class="top-bar-inner">
       <div class="brand">
         <span class="status-indicator" title="Sẵn sàng nhận việc"></span>
-        <span class="brand-text"><strong>Lý Công Minh</strong> • CV Trực tuyến</span>
+        <span class="brand-text"><strong>Lỳ Công Minh</strong> • CV IT Intern / Junior Developer</span>
       </div>
 
       <div class="top-actions">
@@ -44,7 +44,7 @@
         <!-- Avatar upload trigger -->
         <button id="avatarUploadBtn" class="action-btn" title="Thêm hoặc đổi ảnh đại diện">
           <i data-lucide="camera"></i>
-          <span class="btn-text" id="avatarBtnText">Thêm ảnh</span>
+          <span class="btn-text" id="avatarBtnText">Chọn ảnh</span>
         </button>
 
         <!-- Share CV Link -->
@@ -54,414 +54,316 @@
         </button>
 
         <!-- Export PDF / Print -->
-        <button id="printBtn" class="action-btn primary" title="In hoặc lưu file PDF">
+        <button id="printBtn" class="action-btn primary" title="In hoặc lưu file PDF A4">
           <i data-lucide="printer"></i>
-          <span>Xuất PDF / In</span>
+          <span>Xuất PDF / In A4</span>
         </button>
       </div>
     </div>
   </header>
 
-  <!-- Hidden File Input for Avatar Upload -->
+  <!-- Input file ẩn để tải ảnh -->
   <input type="file" id="avatarFileInput" accept="image/*" class="visually-hidden" aria-label="Tải ảnh chân dung">
 
-  <!-- Main CV Document Wrapper -->
+  <!-- Document Wrapper chuẩn A4 -->
   <main class="cv-wrapper">
     <article class="cv-card" id="cvContent">
+      <div class="cv-layout">
 
-      <!-- ================= HEADER SECTION ================= -->
-      <header class="cv-header">
-        <div class="header-main">
-          <div class="header-identity">
-            <h1 class="candidate-name">LÝ CÔNG MINH</h1>
-            <div class="candidate-headline">
-              <span class="job-title">Backend / Fullstack Developer</span>
-              <span class="availability-badge">
-                <span class="pulse-dot"></span>
-                Sẵn sàng làm việc (Full-time / Remote)
-              </span>
-            </div>
-            <p class="summary-statement">
-              Cử nhân Công nghệ Thông tin (ĐH CNTT - ĐHQG TP.HCM) với nền tảng giải thuật vững vàng và tư duy kiến trúc hệ thống hiện đại.
-              Chuyên sâu xây dựng RESTful API và dịch vụ phân tán với <strong>Java Spring Boot, NestJS, PostgreSQL & Redis</strong>;
-              đồng thời có kinh nghiệm phát triển fullstack với <strong>React / Next.js</strong>. Hướng tới viết code sạch, tối ưu hiệu năng và khả năng mở rộng.
-            </p>
+        <!-- ================= CỘT TRÁI (LEFT SIDEBAR) ================= -->
+        <aside class="cv-col-left">
+
+          <!-- 1. HỌ TÊN VÀ VỊ TRÍ ỨNG TUYỂN -->
+          <div class="profile-header">
+            <h1 class="candidate-name">Lỳ Công Minh</h1>
+            <p class="candidate-role">IT Intern / Junior Web Developer</p>
           </div>
 
-          <!-- Avatar / Monogram Box -->
-          <div class="avatar-wrapper" id="avatarWrapper" title="Nhấp để tải ảnh lên (tùy chọn)">
-            <div class="avatar-monogram" id="avatarMonogram">LM</div>
-            <img id="avatarImg" class="avatar-photo hidden" alt="Ảnh chân dung Lý Công Minh">
-            <div class="avatar-hover-hint no-print">
-              <i data-lucide="camera"></i>
+          <!-- 2. ẢNH ĐẠI DIỆN TRÒN (THEO MẪU ẢNH) -->
+          <div class="avatar-container">
+            <div class="avatar-circle" id="avatarCircle" title="Nhấp vào đây để chọn ảnh thẻ của bạn">
+              <div class="avatar-placeholder" id="avatarPlaceholder">
+                <i data-lucide="user" class="avatar-default-icon"></i>
+                <span class="avatar-hint-text">Chọn ảnh 3x4 / 4x6</span>
+              </div>
+              <img id="avatarImg" class="avatar-photo hidden" alt="Ảnh chân dung Lỳ Công Minh">
+              <div class="avatar-overlay no-print">
+                <i data-lucide="camera"></i>
+                <span>Tải ảnh lên</span>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Contact & Links Strip -->
-        <div class="contact-strip">
-          <a href="mailto:lycongminh@email.com" class="contact-pill" title="Gửi email">
-            <i data-lucide="mail"></i>
-            <span>lycongminh@email.com</span>
-          </a>
-          <a href="tel:+84901234567" class="contact-pill" title="Gọi điện thoại">
-            <i data-lucide="phone"></i>
-            <span>+84 90 123 4567</span>
-          </a>
-          <span class="contact-pill static" title="Địa điểm">
-            <i data-lucide="map-pin"></i>
-            <span>TP. Hồ Chí Minh</span>
-          </span>
-          <a href="https://github.com/lycongminh" target="_blank" rel="noopener noreferrer" class="contact-pill" title="GitHub">
-            <i data-lucide="github"></i>
-            <span>github.com/lycongminh</span>
-          </a>
-          <a href="https://linkedin.com/in/lycongminh" target="_blank" rel="noopener noreferrer" class="contact-pill" title="LinkedIn">
-            <i data-lucide="linkedin"></i>
-            <span>linkedin.com/in/lycongminh</span>
-          </a>
-          <a href="https://lycongminh.dev" target="_blank" rel="noopener noreferrer" class="contact-pill highlight" title="Website cá nhân">
-            <i data-lucide="globe"></i>
-            <span>lycongminh.dev</span>
-          </a>
-        </div>
-      </header>
-
-      <hr class="cv-divider">
-
-      <!-- ================= BODY: 2-COLUMN MODERN LAYOUT ================= -->
-      <div class="cv-grid">
-
-        <!-- ================= LEFT COLUMN ================= -->
-        <aside class="cv-column-sidebar">
-
-          <!-- 1. HỌC VẤN -->
-          <section class="section-block">
-            <h2 class="section-heading">
-              <i data-lucide="graduation-cap"></i>
-              <span>Học vấn</span>
-            </h2>
-            <div class="item-entry">
-              <div class="item-title">Đại học Công nghệ Thông tin</div>
-              <div class="item-subtitle">ĐHQG TP. Hồ Chí Minh (UIT)</div>
-              <div class="item-meta">
-                <span>2021 — 2025</span>
-                <span class="meta-separator">•</span>
-                <span class="badge-gpa">GPA: <strong>3.6 / 4.0</strong></span>
-              </div>
-              <div class="item-note">Chuyên ngành Khoa học Máy tính / Kỹ thuật Phần mềm</div>
+          <!-- 3. THÔNG TIN LIÊN HỆ -->
+          <div class="contact-block">
+            <div class="contact-row">
+              <i data-lucide="calendar" class="contact-icon"></i>
+              <span class="contact-text">[CẦN BỔ SUNG NGÀY SINH]</span>
             </div>
-          </section>
+            <div class="contact-row">
+              <i data-lucide="phone" class="contact-icon"></i>
+              <a href="tel:0345288718" class="contact-text link">0345 288 718</a>
+            </div>
+            <div class="contact-row">
+              <i data-lucide="mail" class="contact-icon"></i>
+              <span class="contact-text">[CẦN BỔ SUNG EMAIL]</span>
+            </div>
+            <div class="contact-row">
+              <i data-lucide="map-pin" class="contact-icon"></i>
+              <span class="contact-text">TP. Thái Nguyên, tỉnh Thái Nguyên</span>
+            </div>
+            <div class="contact-row">
+              <i data-lucide="github" class="contact-icon"></i>
+              <a href="https://github.com/3Blue-1Brown" target="_blank" rel="noopener noreferrer"
+                class="contact-text link">github.com/3Blue-1Brown</a>
+            </div>
+          </div>
 
-          <!-- 2. KỸ NĂNG CHUYÊN MÔN -->
-          <section class="section-block">
-            <h2 class="section-heading">
-              <i data-lucide="cpu"></i>
-              <span>Kỹ năng Chuyên môn</span>
-            </h2>
-
-            <div class="skill-group">
-              <span class="skill-category-label">Ngôn ngữ lập trình</span>
-              <div class="tag-cloud">
-                <span class="tag strong">Java (11/17)</span>
-                <span class="tag strong">TypeScript</span>
-                <span class="tag">JavaScript</span>
-                <span class="tag">Python</span>
-                <span class="tag">SQL</span>
+          <!-- 4. MỤC TIÊU NGHỀ NGHIỆP (PILL HEADER THEO ẢNH MẪU) -->
+          <div class="left-section">
+            <div class="pill-heading">Mục tiêu nghề nghiệp</div>
+            <div class="objective-content">
+              <p>
+                Sinh viên năm cuối chuyên ngành Công nghệ thông tin có tinh thần cầu tiến, tư duy logic tốt và tính kỷ luật cao trong học tập, công việc.
+              </p>
+              <div class="sub-objective">
+                <strong>Mục tiêu ngắn hạn:</strong> Vận dụng kiến thức nền tảng về lập trình web (HTML, CSS, JS) và cơ sở dữ liệu (SQL) vào công việc thực tế tại vị trí IT Intern / Junior Developer; nâng cao kỹ năng làm việc nhóm và giải quyết vấn đề theo quy trình phần mềm chuẩn.
+              </div>
+              <div class="sub-objective">
+                <strong>Mục tiêu dài hạn:</strong> Trau dồi chuyên môn sâu về phát triển phần mềm, rèn luyện tư duy kiến trúc hệ thống và phấn đấu trở thành một Lập trình viên Fullstack chuyên nghiệp, tạo ra các sản phẩm công nghệ có giá trị thực tiễn.
               </div>
             </div>
+          </div>
 
-            <div class="skill-group">
-              <span class="skill-category-label">Backend & Kiến trúc</span>
-              <div class="tag-cloud">
-                <span class="tag strong">Spring Boot</span>
-                <span class="tag strong">NestJS</span>
-                <span class="tag">Express</span>
-                <span class="tag">RESTful API</span>
-                <span class="tag">Microservices</span>
-                <span class="tag">WebSocket</span>
+          <!-- 5. KỸ NĂNG CHUYÊN MÔN (PILL HEADER THEO ẢNH MẪU) -->
+          <div class="left-section">
+            <div class="pill-heading">Kỹ năng chuyên môn</div>
+            <div class="skills-structured">
+              <!-- Ngôn ngữ lập trình -->
+              <div class="skill-category">
+                <div class="category-name">Ngôn ngữ lập trình:</div>
+                <ul class="skill-bullets">
+                  <li><strong>Đã thực hành:</strong> HTML5, CSS3, JavaScript (ES6), SQL.</li>
+                  <li><strong>Đang học / Tiếp cận:</strong> Python, Kotlin (Android).</li>
+                </ul>
+              </div>
+
+              <!-- Phát triển Web -->
+              <div class="skill-category">
+                <div class="category-name">Phát triển Web:</div>
+                <ul class="skill-bullets">
+                  <li>Cắt giao diện Web chuẩn Responsive (Desktop, Mobile, Tablet).</li>
+                  <li>Xử lý sự kiện DOM, xác thực biểu mẫu (Form Validation).</li>
+                  <li>Thao tác chức năng CRUD cơ bản kết nối cơ sở dữ liệu.</li>
+                </ul>
+              </div>
+
+              <!-- Cơ sở dữ liệu -->
+              <div class="skill-category">
+                <div class="category-name">Cơ sở dữ liệu:</div>
+                <ul class="skill-bullets">
+                  <li>MySQL, SQLite: Thiết kế bảng, khóa chính / khóa ngoại.</li>
+                  <li>Truy vấn dữ liệu SQL: SELECT, INSERT, UPDATE, DELETE, JOIN cơ bản.</li>
+                </ul>
+              </div>
+
+              <!-- Công cụ & Hệ thống -->
+              <div class="skill-category">
+                <div class="category-name">Công cụ & Hệ thống IT:</div>
+                <ul class="skill-bullets">
+                  <li>Visual Studio Code, Git, GitHub, Android Studio.</li>
+                  <li>Cài đặt môi trường phát triển (Node.js, XAMPP, JDK, CMD).</li>
+                  <li>Cài đặt phần mềm, khắc phục sự cố máy tính và mạng cơ bản.</li>
+                </ul>
+              </div>
+
+              <!-- Kỹ năng mềm -->
+              <div class="skill-category">
+                <div class="category-name">Kỹ năng mềm & Ngoại ngữ:</div>
+                <ul class="skill-bullets">
+                  <li>Khả năng tự học và tra cứu tài liệu kỹ thuật bằng tiếng Anh.</li>
+                  <li>Tư duy giải quyết vấn đề, tinh thần trách nhiệm và làm việc nhóm.</li>
+                </ul>
               </div>
             </div>
-
-            <div class="skill-group">
-              <span class="skill-category-label">Cơ sở dữ liệu & Cache</span>
-              <div class="tag-cloud">
-                <span class="tag strong">PostgreSQL</span>
-                <span class="tag strong">Redis</span>
-                <span class="tag">MySQL</span>
-                <span class="tag">MongoDB</span>
-                <span class="tag">Query Tuning</span>
-              </div>
-            </div>
-
-            <div class="skill-group">
-              <span class="skill-category-label">DevOps & Cloud</span>
-              <div class="tag-cloud">
-                <span class="tag strong">Docker</span>
-                <span class="tag">Git & Actions</span>
-                <span class="tag">Linux CLI</span>
-                <span class="tag">AWS Basics</span>
-                <span class="tag">Nginx</span>
-              </div>
-            </div>
-
-            <div class="skill-group">
-              <span class="skill-category-label">Frontend & Khác</span>
-              <div class="tag-cloud">
-                <span class="tag">React.js</span>
-                <span class="tag">Next.js</span>
-                <span class="tag">Tailwind CSS</span>
-                <span class="tag">JUnit / Jest</span>
-                <span class="tag">Clean Code</span>
-              </div>
-            </div>
-          </section>
-
-          <!-- 3. CHỨNG CHỈ & THÀNH TÍCH -->
-          <section class="section-block">
-            <h2 class="section-heading">
-              <i data-lucide="award"></i>
-              <span>Chứng chỉ & Giải thưởng</span>
-            </h2>
-            <ul class="clean-list">
-              <li>
-                <div class="list-bullet-title">AWS Certified Cloud Practitioner</div>
-                <div class="list-bullet-sub">Amazon Web Services • 2024</div>
-              </li>
-              <li>
-                <div class="list-bullet-title">Giải Nhất Hackathon "Digital Transformation"</div>
-                <div class="list-bullet-sub">ĐHQG TP.HCM (50+ đội tham gia) • 2023</div>
-              </li>
-              <li>
-                <div class="list-bullet-title">Oracle Certified Associate (OCA)</div>
-                <div class="list-bullet-sub">Java SE 11 Programmer • 2024</div>
-              </li>
-              <li>
-                <div class="list-bullet-title">Top 10 Vietnam Student Coding Contest</div>
-                <div class="list-bullet-sub">Toàn quốc (VSCC) • 2023</div>
-              </li>
-            </ul>
-          </section>
-
-          <!-- 4. NGOẠI NGỮ & CHỈ SỐ -->
-          <section class="section-block">
-            <h2 class="section-heading">
-              <i data-lucide="globe-2"></i>
-              <span>Ngoại ngữ & Hoạt động</span>
-            </h2>
-            <div class="compact-info-row">
-              <span class="info-label">Tiếng Anh:</span>
-              <span class="info-value"><strong>IELTS 7.0</strong> (Đọc hiểu tài liệu & giao tiếp kỹ thuật tốt)</span>
-            </div>
-            <div class="compact-info-row">
-              <span class="info-label">LeetCode / CF:</span>
-              <span class="info-value">300+ bài giải thuật • Codeforces Specialist (1650)</span>
-            </div>
-          </section>
+          </div>
 
         </aside>
 
-        <!-- ================= RIGHT COLUMN ================= -->
-        <section class="cv-column-main">
+        <!-- ================= CỘT PHẢI (RIGHT COLUMN VỚI TIMELINE DỌC) ================= -->
+        <section class="cv-col-right">
 
-          <!-- 1. KINH NGHIỆM LÀM VIỆC -->
-          <section class="section-block">
-            <h2 class="section-heading">
-              <i data-lucide="briefcase"></i>
-              <span>Kinh nghiệm Làm việc</span>
-            </h2>
-
-            <div class="timeline-entry">
-              <div class="entry-header">
-                <div>
-                  <h3 class="entry-title">Backend Developer Intern</h3>
-                  <div class="entry-company">TechSolutions Vietnam</div>
-                </div>
-                <div class="entry-date">06/2023 — 08/2023</div>
+          <!-- 1. HỌC VẤN -->
+          <div class="timeline-group">
+            <div class="timeline-header">
+              <span class="timeline-dot"></span>
+              <h2 class="section-title">Học vấn</h2>
+            </div>
+            <div class="timeline-card">
+              <div class="card-top-row">
+                <span class="card-date">2022 — 2026</span>
               </div>
-              <ul class="entry-bullets">
+              <h3 class="card-main-title">Trường Đại học Công nghệ Thông tin và Truyền thông</h3>
+              <div class="card-sub-title">Đại học Thái Nguyên (ICTU)</div>
+              <div class="card-spec"><strong>Chuyên ngành:</strong> Công nghệ thông tin</div>
+              <div class="card-meta-note">
+                • <strong>Xếp loại / GPA:</strong> [CẦN BỔ SUNG GPA NẾU CÓ]
+              </div>
+              <div class="card-meta-note">
+                • <strong>Kiến thức chuyên môn trọng tâm:</strong> Lập trình hướng đối tượng (OOP), Cơ sở dữ liệu & SQL, Cấu trúc dữ liệu & Giải thuật, Phát triển ứng dụng Web, Kiến trúc máy tính & Mạng máy tính cơ bản.
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. KINH NGHIỆM THỰC HÀNH & HOẠT ĐỘNG KỸ THUẬT -->
+          <div class="timeline-group">
+            <div class="timeline-header">
+              <span class="timeline-dot"></span>
+              <h2 class="section-title">Kinh nghiệm thực hành & Hoạt động kỹ thuật</h2>
+            </div>
+            <div class="timeline-card">
+              <div class="card-top-row">
+                <span class="card-date">2023 — Hiện tại</span>
+              </div>
+              <h3 class="card-main-title">Thực hành lập trình & Đồ án chuyên ngành</h3>
+              <div class="card-sub-title">Trường ĐH Công nghệ Thông tin & Truyền thông - ĐH Thái Nguyên</div>
+              <ul class="card-bullets">
                 <li>
-                  Tham gia thiết kế và hiện thực các module RESTful API (quản lý khách hàng, phân quyền và báo cáo doanh thu)
-                  phục vụ hệ thống CRM nội bộ bằng <strong>Java Spring Boot & PostgreSQL</strong>.
+                  <strong>Phát triển giao diện Website:</strong> Thiết kế và xây dựng các trang web tĩnh & động bằng HTML, CSS và JavaScript; áp dụng CSS Flexbox / Grid để đảm bảo hiển thị tối ưu trên nhiều thiết bị.
                 </li>
                 <li>
-                  Phân tích Execution Plan, đánh chỉ mục B-tree và tối ưu 3 truy vấn chậm, giúp <strong>giảm 73% độ trễ API trung bình</strong> (từ 450ms xuống ~120ms).
+                  <strong>Tổ chức & Thao tác Cơ sở dữ liệu:</strong> Thiết kế lược đồ cơ sở dữ liệu quan hệ (ERD), tạo bảng, thiết lập ràng buộc toàn vẹn và viết các truy vấn SQL phục vụ lưu trữ thông tin dự án môn học.
                 </li>
                 <li>
-                  Viết Unit Test & Integration Test với <strong>JUnit 5 & Mockito</strong>, nâng độ bao phủ kiểm thử (coverage) từ <strong>60% lên 85%</strong>.
+                  <strong>Quản lý mã nguồn với Git/GitHub:</strong> Sử dụng thành thạo Git command line cơ bản (clone, commit, push, pull, branch) để lưu trữ và quản lý phiên bản mã nguồn tại kho lưu trữ GitHub cá nhân.
                 </li>
                 <li>
-                  Đóng gói dịch vụ thành Docker container và phối hợp triển khai môi trường staging theo quy trình Git flow & Agile/Scrum.
+                  <strong>Hỗ trợ kỹ thuật & Cài đặt môi trường:</strong> Cài đặt hệ điều hành Windows, phần mềm máy tính văn phòng, môi trường lập trình (VS Code, Python, Android Studio, XAMPP) và xử lý sự cố máy tính cơ bản.
                 </li>
               </ul>
-              <div class="entry-tags">
-                <span class="micro-badge">Java 17</span>
-                <span class="micro-badge">Spring Boot</span>
-                <span class="micro-badge">PostgreSQL</span>
-                <span class="micro-badge">Docker</span>
-                <span class="micro-badge">JUnit 5</span>
-              </div>
             </div>
-          </section>
+          </div>
 
-          <!-- 2. DỰ ÁN TIÊU BIỂU -->
-          <section class="section-block">
-            <h2 class="section-heading">
-              <i data-lucide="folder-code"></i>
-              <span>Dự án Tiêu biểu</span>
-            </h2>
+          <!-- 3. DỰ ÁN CÁ NHÂN VÀ DỰ ÁN HỌC TẬP -->
+          <div class="timeline-group">
+            <div class="timeline-header">
+              <span class="timeline-dot"></span>
+              <h2 class="section-title">Dự án cá nhân & Dự án học tập</h2>
+            </div>
 
-            <!-- Project 1 -->
-            <div class="project-entry">
-              <div class="project-top">
-                <div>
-                  <h3 class="project-name">
-                    E-Commerce Platform — Hệ thống TMĐT Phân tán
-                  </h3>
-                  <div class="project-type">Microservices Architecture • Đồ án tốt nghiệp / Dự án cá nhân</div>
-                </div>
-                <div class="project-actions no-print">
-                  <a href="https://github.com/lycongminh" target="_blank" rel="noopener noreferrer" class="link-chip" title="Mã nguồn GitHub">
-                    <i data-lucide="github"></i> Code
-                  </a>
-                  <a href="https://lycongminh.dev" target="_blank" rel="noopener noreferrer" class="link-chip" title="Bản chạy thử">
-                    <i data-lucide="external-link"></i> Live
-                  </a>
-                </div>
+            <!-- Dự án 1 -->
+            <div class="timeline-card project-card">
+              <div class="card-top-row">
+                <span class="card-date">[CẦN BỔ SUNG THỜI GIAN]</span>
+                <span class="project-tag">Dự án đề xuất / Đã thực hiện</span>
               </div>
-              <p class="project-summary">
-                Hệ thống thương mại điện tử phân tán gồm các microservices độc lập: Auth (JWT), Product Catalog, Order, Payment (Stripe), và Notification.
-              </p>
-              <ul class="project-bullets">
-                <li>Ứng dụng <strong>Redis Caching</strong> cho danh mục & chi tiết sản phẩm, giảm tải database và cải thiện <strong>70% thời gian phản hồi API</strong>.</li>
-                <li>Tối ưu hóa cấu trúc cơ sở dữ liệu PostgreSQL với Indexing, đảm bảo tính toàn vẹn dữ liệu trong các giao dịch thanh toán đơn hàng.</li>
-                <li>Đóng gói toàn bộ hệ thống bằng Docker Compose, thiết lập CI/CD pipeline tự động hóa kiểm thử mã nguồn.</li>
+              <h3 class="card-main-title">Website Bán Linh Kiện Máy Tính</h3>
+              <div class="card-sub-title">Đồ án môn học / Dự án Web Frontend & Backend cơ bản</div>
+              <div class="project-tech"><strong>Công nghệ:</strong> HTML5, CSS3, JavaScript, MySQL / SQLite</div>
+              <ul class="card-bullets">
+                <li><strong>Mục tiêu:</strong> Xây dựng website thương mại điện tử đơn giản phục vụ tra cứu và đặt mua linh kiện máy tính (CPU, VGA, RAM, Ổ cứng...).</li>
+                <li><strong>Chức năng chính:</strong>
+                  <span>Trang chủ hiển thị danh sách sản phẩm; phân loại theo nhóm linh kiện; thanh tìm kiếm sản phẩm; chức năng giỏ hàng lưu bằng LocalStorage / Session; biểu mẫu nhập thông tin đặt hàng với tính năng kiểm tra dữ liệu hợp lệ (Validation).</span>
+                </li>
+                <li><strong>Phần việc đảm nhận:</strong> Thiết kế toàn bộ bố cục giao diện responsive, viết logic thêm/xóa sản phẩm trong giỏ hàng và thiết kế cấu trúc bảng cơ sở dữ liệu.</li>
               </ul>
-              <div class="entry-tags">
-                <span class="micro-badge">NestJS</span>
-                <span class="micro-badge">Next.js</span>
-                <span class="micro-badge">PostgreSQL</span>
-                <span class="micro-badge">Redis</span>
-                <span class="micro-badge">Docker</span>
-                <span class="micro-badge">Stripe API</span>
+              <div class="project-links no-print">
+                <a href="https://github.com/3Blue-1Brown" target="_blank" rel="noopener noreferrer" class="code-link">
+                  <i data-lucide="github"></i> <span>Xem mã nguồn trên GitHub</span>
+                </a>
               </div>
             </div>
 
-            <!-- Project 2 -->
-            <div class="project-entry">
-              <div class="project-top">
-                <div>
-                  <h3 class="project-name">
-                    TaskFlow — Nền tảng Quản lý Dự án & Kanban Realtime
-                  </h3>
-                  <div class="project-type">Fullstack Realtime Web Application</div>
-                </div>
-                <div class="project-actions no-print">
-                  <a href="https://github.com/lycongminh" target="_blank" rel="noopener noreferrer" class="link-chip" title="Mã nguồn GitHub">
-                    <i data-lucide="github"></i> Code
-                  </a>
-                  <a href="https://lycongminh.dev" target="_blank" rel="noopener noreferrer" class="link-chip" title="Bản chạy thử">
-                    <i data-lucide="external-link"></i> Live
-                  </a>
-                </div>
+            <!-- Dự án 2 -->
+            <div class="timeline-card project-card">
+              <div class="card-top-row">
+                <span class="card-date">[CẦN BỔ SUNG THỜI GIAN]</span>
+                <span class="project-tag">Dự án học tập</span>
               </div>
-              <p class="project-summary">
-                Ứng dụng cộng tác và điều phối công việc Agile/Kanban cho nhóm kỹ thuật, hỗ trợ kéo thả trạng thái và đồng bộ hóa tức thì.
-              </p>
-              <ul class="project-bullets">
-                <li>Tích hợp <strong>WebSocket (Socket.io)</strong> để cập nhật dữ liệu bảng Kanban, bình luận và thông báo theo thời gian thực giữa các thành viên.</li>
-                <li>Xây dựng cơ chế phân quyền theo vai trò (RBAC) chặt chẽ và xác thực người dùng an toàn bằng JWT kết hợp OAuth2 Google.</li>
-                <li>Viết kiểm thử tự động với Jest và Cypress đạt <strong>test coverage 85%</strong>.</li>
+              <h3 class="card-main-title">Ứng Dụng Quản Lý Sinh Viên</h3>
+              <div class="card-sub-title">Ứng dụng phần mềm thực hành xử lý dữ liệu</div>
+              <div class="project-tech"><strong>Công nghệ:</strong> Python hoặc Kotlin (Android), SQLite / MySQL</div>
+              <ul class="card-bullets">
+                <li><strong>Mục tiêu:</strong> Xây dựng ứng dụng quản lý hồ sơ và kết quả học tập của sinh viên với đầy đủ chức năng CRUD.</li>
+                <li><strong>Chức năng chính:</strong>
+                  <span>Thêm mới hồ sơ sinh viên (Mã SV, họ tên, lớp, điểm số); hiển thị danh sách dạng bảng/danh sách cuộn; tìm kiếm theo tên hoặc mã sinh viên; chỉnh sửa thông tin và xóa sinh viên khỏi hệ thống.</span>
+                </li>
+                <li><strong>Phần việc đảm nhận:</strong> Thiết kế giao diện thao tác, viết các câu lệnh truy vấn SQLite và bắt lỗi ngoại lệ khi người dùng nhập dữ liệu.</li>
               </ul>
-              <div class="entry-tags">
-                <span class="micro-badge">React.js</span>
-                <span class="micro-badge">Node.js</span>
-                <span class="micro-badge">Express</span>
-                <span class="micro-badge">Socket.io</span>
-                <span class="micro-badge">MongoDB</span>
-                <span class="micro-badge">Tailwind CSS</span>
+              <div class="project-links no-print">
+                <a href="https://github.com/3Blue-1Brown" target="_blank" rel="noopener noreferrer" class="code-link">
+                  <i data-lucide="github"></i> <span>Mã nguồn: [CẦN BỔ SUNG LINK GITHUB]</span>
+                </a>
               </div>
             </div>
 
-            <!-- Project 3 -->
-            <div class="project-entry">
-              <div class="project-top">
-                <div>
-                  <h3 class="project-name">
-                    Food Delivery API — Backend Xử lý Đơn hàng Đồng thời cao
-                  </h3>
-                  <div class="project-type">High-Concurrency Backend System</div>
-                </div>
-                <div class="project-actions no-print">
-                  <a href="https://github.com/lycongminh" target="_blank" rel="noopener noreferrer" class="link-chip" title="Mã nguồn GitHub">
-                    <i data-lucide="github"></i> Code
-                  </a>
-                </div>
+            <!-- Dự án 3 -->
+            <div class="timeline-card project-card">
+              <div class="card-top-row">
+                <span class="card-date">[CẦN BỔ SUNG THỜI GIAN]</span>
+                <span class="project-tag">Dự án Web Cá nhân</span>
               </div>
-              <p class="project-summary">
-                Hệ thống backend chuyên biệt cho đặt món, đồng bộ menu nhà hàng và xử lý thanh toán giao hàng với lưu lượng cao.
-              </p>
-              <ul class="project-bullets">
-                <li>Thiết kế cấu trúc RESTful API chuẩn OpenAPI; áp dụng <strong>Redis Distributed Lock</strong> chống tình trạng over-ordering khi flash sale.</li>
-                <li>Tích hợp message broker <strong>Apache Kafka</strong> để xử lý luồng sự kiện bất đồng bộ (order placed, payment verified, driver assigned).</li>
+              <h3 class="card-main-title">Website Portfolio Cá Nhân & Giới Thiệu Bản Thân</h3>
+              <div class="card-sub-title">Website cá nhân trực tuyến</div>
+              <div class="project-tech"><strong>Công nghệ:</strong> HTML5, CSS3 (Modern Flex/Grid), JavaScript, GitHub Pages</div>
+              <ul class="card-bullets">
+                <li><strong>Mục tiêu:</strong> Xây dựng trang hồ sơ năng lực trực tuyến (Online CV) để gửi đến nhà tuyển dụng một cách chuyên nghiệp.</li>
+                <li><strong>Chức năng chính:</strong> Hiển thị thông tin cá nhân, định hướng nghề nghiệp, nhóm kỹ năng, các dự án nổi bật, chế độ xem Sáng/Tối, nút xuất file PDF in ấn chuẩn A4.</li>
+                <li><strong>Triển khai:</strong> Xuất bản trực tiếp trên nền tảng GitHub Pages.</li>
               </ul>
-              <div class="entry-tags">
-                <span class="micro-badge">Java 17</span>
-                <span class="micro-badge">Spring Boot</span>
-                <span class="micro-badge">Redis Lock</span>
-                <span class="micro-badge">Apache Kafka</span>
-                <span class="micro-badge">PostgreSQL</span>
+              <div class="project-links no-print">
+                <a href="https://github.com/3Blue-1Brown" target="_blank" rel="noopener noreferrer" class="code-link">
+                  <i data-lucide="github"></i> <span>github.com/3Blue-1Brown</span>
+                </a>
               </div>
             </div>
+          </div>
 
-          </section>
-
-          <!-- 3. HOẠT ĐỘNG & ĐÓNG GÓP -->
-          <section class="section-block">
-            <h2 class="section-heading">
-              <i data-lucide="sparkles"></i>
-              <span>Hoạt động & Cộng đồng</span>
-            </h2>
-            <div class="compact-activity-grid">
-              <div class="activity-card">
-                <div class="activity-head">
-                  <i data-lucide="git-pull-request"></i>
-                  <strong>Open Source Contributor</strong>
-                </div>
-                <p>Đóng góp giải quyết issue và hoàn thiện tài liệu cho 3+ kho lưu trữ nguồn mở trên GitHub.</p>
-              </div>
-              <div class="activity-card">
-                <div class="activity-head">
-                  <i data-lucide="pen-tool"></i>
-                  <strong>Technical Writer</strong>
-                </div>
-                <p>Chia sẻ 15+ bài viết chuyên môn về Java, Spring Boot và tối ưu hóa SQL trên Medium / Tech Blog (5K+ lượt đọc).</p>
-              </div>
+          <!-- 4. CHỨNG CHỈ & HOẠT ĐỘNG PHÁT TRIỂN -->
+          <div class="timeline-group">
+            <div class="timeline-header">
+              <span class="timeline-dot"></span>
+              <h2 class="section-title">Chứng chỉ & Hoạt động học tập</h2>
             </div>
-          </section>
+            <div class="timeline-card">
+              <div class="card-top-row">
+                <span class="card-date">2022 — 2026</span>
+              </div>
+              <h3 class="card-main-title">Khóa học & Hoạt động nâng cao kỹ năng</h3>
+              <ul class="card-bullets">
+                <li>
+                  <strong>Khóa học trực tuyến:</strong> Đang tham gia các khóa học về lập trình Frontend (HTML, CSS, JavaScript cơ bản đến nâng cao) trên FreeCodeCamp / Coursera / YouTube.
+                </li>
+                <li>
+                  <strong>Tự rèn luyện thuật toán:</strong> Thực hành giải các bài tập lập trình cơ bản trên nền tảng trực tuyến để nâng cao tư duy giải thuật.
+                </li>
+                <li>
+                  <strong>Chứng chỉ chuyên môn:</strong> <em>[CẦN BỔ SUNG NẾU BẠN ĐÃ CÓ CHỨNG CHỈ TIẾNG ANH, TIN HỌC HOẶC KHÓA HỌC ONLINE]</em>
+                </li>
+              </ul>
+            </div>
+          </div>
 
         </section>
+
       </div>
 
-      <!-- ================= COMPACT FOOTER ================= -->
+      <!-- Footer bản in -->
       <footer class="cv-footer">
-        <span>Cập nhật: 10/2024</span>
-        <span class="footer-dot">•</span>
-        <span>Cam kết thông tin trung thực</span>
-        <span class="footer-dot">•</span>
-        <span>Lý Công Minh — Backend / Fullstack Developer</span>
+        <span>CV Lỳ Công Minh — Ứng tuyển IT Intern / Junior Web Developer</span>
+        <span>•</span>
+        <span>Thái Nguyên, 2026</span>
       </footer>
-
     </article>
   </main>
 
   <!-- Notification Toast -->
   <div id="toast" class="toast" role="alert" aria-live="polite">
     <i data-lucide="check" class="toast-icon"></i>
-    <span id="toastMessage">Đã sao chép vào bộ nhớ tạm!</span>
+    <span id="toastMessage">Đã sao chép!</span>
   </div>
 
-  <!-- JavaScript Logic -->
+  <!-- JavaScript -->
   <script src="script.js"></script>
 </body>
 
