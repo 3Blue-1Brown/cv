@@ -68,11 +68,25 @@ Sinh viên năm cuối chuyên ngành Công nghệ thông tin có nền tảng t
 
 ---
 
-## 5. DỰ ÁN CÁ NHÂN VÀ DỰ ÁN HỌC TẬP
+## 5. DỰ ÁN CÁ NHÂN VÀ DỰ ÁN THỰC TẬP
 
-### Dự án 1: Website Bán Linh Kiện Máy Tính
+### Dự án 1: Website Portfolio Cá Nhân & Giới Thiệu Bản Thân
+- **Thời gian thực hiện:** 2024 — Hiện tại
+- **Tình trạng:** [Đang hoạt động / Dự án Cá nhân]
+- **Mục tiêu:** Xây dựng trang hồ sơ năng lực trực tuyến để giới thiệu kỹ năng và các dự án cá nhân đến nhà tuyển dụng.
+- **Công nghệ sử dụng:** HTML5, CSS3, JavaScript, GitHub Pages.
+- **Chức năng chính:**
+  1. Bố cục 2 cột hiện đại, chuẩn A4 dễ dàng in ra file PDF.
+  2. Hiển thị thông tin cá nhân, định hướng nghề nghiệp và danh mục kỹ năng.
+  3. Tích hợp tính năng đổi giao diện Sáng / Tối và sao chép thông tin nhanh.
+  4. Triển khai trực tiếp trên nền tảng GitHub Pages.
+- **Link mã nguồn & Demo:** https://github.com/3Blue-1Brown
+
+---
+
+### Dự án 2: Website Bán Linh Kiện Máy Tính
 - **Thời gian thực hiện:** [CẦN BỔ SUNG THỜI GIAN]
-- **Tình trạng:** [Dự án đề xuất / Cần xác nhận thực tế]
+- **Tình trạng:** [Dự án Thực tập / Đồ án]
 - **Mục tiêu:** Xây dựng website thương mại điện tử cơ bản cho phép khách hàng tra cứu và chọn mua linh kiện máy tính (CPU, RAM, VGA, Ổ cứng...).
 - **Công nghệ sử dụng:** HTML5, CSS3, JavaScript, MySQL hoặc SQLite.
 - **Chức năng chính:**
@@ -82,20 +96,6 @@ Sinh viên năm cuối chuyên ngành Công nghệ thông tin có nền tảng t
   4. Form nhập thông tin thanh toán với tính năng kiểm tra lỗi nhập liệu.
 - **Vai trò & Phần việc đảm nhận:** Thiết kế giao diện người dùng, lập trình xử lý giỏ hàng bằng JavaScript và thiết kế cấu trúc bảng cơ sở dữ liệu.
 - **Link mã nguồn GitHub:** https://github.com/3Blue-1Brown
-
----
-
-### Dự án 2: Website Portfolio Cá Nhân & Giới Thiệu Bản Thân
-- **Thời gian thực hiện:** [CẦN BỔ SUNG THỜI GIAN]
-- **Tình trạng:** [Đang hoạt động]
-- **Mục tiêu:** Xây dựng trang hồ sơ năng lực trực tuyến để giới thiệu kỹ năng và các dự án cá nhân đến nhà tuyển dụng.
-- **Công nghệ sử dụng:** HTML5, CSS3, JavaScript, GitHub Pages.
-- **Chức năng chính:**
-  1. Bố cục 2 cột hiện đại, chuẩn A4 dễ dàng in ra file PDF.
-  2. Hiển thị thông tin cá nhân, định hướng nghề nghiệp và danh mục kỹ năng.
-  3. Tích hợp tính năng đổi giao diện Sáng / Tối và sao chép thông tin nhanh.
-  4. Triển khai trực tiếp trên nền tảng GitHub Pages.
-- **Link mã nguồn & Demo:** https://github.com/3Blue-1Brown
 
 ---
 
