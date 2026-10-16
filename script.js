@@ -1,7 +1,7 @@
 /**
- * CV Lý Công Minh - Interactive Logic
- * Features: Dark/Light Mode, Print to PDF, Project Filtering,
- * Clipboard Copy with Toast, and Optional Avatar Preview/Reset.
+ * CV LÝ CÔNG MINH - INTERACTIVE LOGIC
+ * Features: Dark/Light Mode toggle, Print/Export PDF, Share link with Toast,
+ * and Optional Avatar Photo Upload/Reset.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -11,29 +11,33 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* --------------------------------------------------
-     1. THEME SWITCHER (DARK / LIGHT)
+     1. THEME TOGGLE (LIGHT / DARK)
+     Default: 'light' (dễ nhìn, trang nhã, sắc nét)
      -------------------------------------------------- */
   const themeToggleBtn = document.getElementById('themeToggleBtn');
   const htmlRoot = document.documentElement;
 
-  // Retrieve saved theme or default to 'dark'
-  const savedTheme = localStorage.getItem('lycongminh_cv_theme') || 'dark';
+  // Retrieve saved theme or default to 'light'
+  const savedTheme = localStorage.getItem('minh_cv_theme') || 'light';
   htmlRoot.setAttribute('data-theme', savedTheme);
 
   if (themeToggleBtn) {
     themeToggleBtn.addEventListener('click', () => {
-      const currentTheme = htmlRoot.getAttribute('data-theme');
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      
+      const currentTheme = htmlRoot.getAttribute('data-theme') || 'light';
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
       htmlRoot.setAttribute('data-theme', newTheme);
-      localStorage.setItem('lycongminh_cv_theme', newTheme);
-      
+      localStorage.setItem('minh_cv_theme', newTheme);
+
+      // Re-trigger icon render if needed
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+
       showToast(`Đã chuyển sang giao diện ${newTheme === 'dark' ? 'Tối' : 'Sáng'}`);
     });
   }
 
   /* --------------------------------------------------
-     2. PRINT / EXPORT PDF
+     2. EXPORT / PRINT PDF
      -------------------------------------------------- */
   const printBtn = document.getElementById('printBtn');
   if (printBtn) {
@@ -48,172 +52,133 @@ document.addEventListener('DOMContentLoaded', () => {
   const shareBtn = document.getElementById('shareBtn');
   if (shareBtn) {
     shareBtn.addEventListener('click', async () => {
-      const url = window.location.href;
+      const currentUrl = window.location.href;
+
       if (navigator.share) {
         try {
           await navigator.share({
-            title: 'Lý Công Minh - CV',
-            text: 'CV Lý Công Minh - Backend / Fullstack Developer',
-            url: url
+            title: 'Lý Công Minh — Backend / Fullstack Developer',
+            text: 'Xem CV của Lý Công Minh',
+            url: currentUrl
           });
           return;
         } catch (err) {
-          // If user cancelled or failed, fall back to copy
+          // Fallback to clipboard if user cancels or browser rejects
         }
       }
 
-      // Fallback copy to clipboard
-      copyToClipboard(url, 'Đã sao chép liên kết CV vào bộ nhớ tạm!');
+      copyToClipboard(currentUrl, 'Đã sao chép liên kết CV vào bộ nhớ tạm!');
     });
   }
 
   /* --------------------------------------------------
-     4. COPY CONTACT BUTTONS
+     4. OPTIONAL AVATAR UPLOAD & RESET
      -------------------------------------------------- */
-  const copyButtons = document.querySelectorAll('.copy-mini-btn');
-  copyButtons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const textToCopy = btn.getAttribute('data-copy');
-      if (textToCopy) {
-        copyToClipboard(textToCopy, `Đã sao chép: ${textToCopy}`);
-      }
-    });
-  });
+  const avatarWrapper = document.getElementById('avatarWrapper');
+  const avatarUploadBtn = document.getElementById('avatarUploadBtn');
+  const avatarFileInput = document.getElementById('avatarFileInput');
+  const avatarMonogram = document.getElementById('avatarMonogram');
+  const avatarImg = document.getElementById('avatarImg');
+  const avatarBtnText = document.getElementById('avatarBtnText');
 
-  /* --------------------------------------------------
-     5. PROJECT FILTERING
-     -------------------------------------------------- */
-  const filterButtons = document.querySelectorAll('.filter-btn');
-  const projectCards = document.querySelectorAll('.project-card');
+  let hasCustomPhoto = false;
 
-  filterButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      // Remove active class from all buttons
-      filterButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const filterValue = btn.getAttribute('data-filter');
-
-      projectCards.forEach(card => {
-        const cardCategory = card.getAttribute('data-category');
-        if (filterValue === 'all' || cardCategory === filterValue) {
-          card.classList.remove('fade-out');
-        } else {
-          card.classList.add('fade-out');
-        }
-      });
-    });
-  });
-
-  /* --------------------------------------------------
-     6. OPTIONAL AVATAR UPLOAD / RESET (BLANK BY DEFAULT)
-     -------------------------------------------------- */
-  const avatarCard = document.getElementById('avatarCard');
-  const avatarPlaceholder = document.getElementById('avatarPlaceholder');
-  const avatarImage = document.getElementById('avatarImage');
-  const avatarUpload = document.getElementById('avatarUpload');
-  const toggleUploadBtn = document.getElementById('toggleUploadBtn');
-
-  // By default, avatar is kept blank as requested
-  if (toggleUploadBtn && avatarUpload && avatarCard) {
-    toggleUploadBtn.addEventListener('click', () => {
-      if (!avatarImage.classList.contains('hidden')) {
-        // If image is currently displayed, remove it and return to blank
-        resetAvatarToBlank();
+  function triggerAvatarUpload() {
+    if (hasCustomPhoto) {
+      // Toggle back to monogram or allow re-upload
+      const confirmRemove = confirm('Bạn có muốn gỡ ảnh đại diện và quay về chữ viết tắt tối giản không?');
+      if (confirmRemove) {
+        avatarImg.src = '';
+        avatarImg.classList.add('hidden');
+        avatarMonogram.classList.remove('hidden');
+        hasCustomPhoto = false;
+        if (avatarBtnText) avatarBtnText.textContent = 'Thêm ảnh';
+        avatarFileInput.value = '';
+        showToast('Đã quay về chữ viết tắt tối giản');
       } else {
-        // Trigger file input
-        avatarUpload.click();
+        avatarFileInput.click();
       }
-    });
+    } else {
+      avatarFileInput.click();
+    }
+  }
 
-    avatarCard.addEventListener('click', () => {
-      if (avatarImage.classList.contains('hidden')) {
-        avatarUpload.click();
-      }
-    });
+  if (avatarWrapper) {
+    avatarWrapper.addEventListener('click', triggerAvatarUpload);
+  }
 
-    avatarUpload.addEventListener('change', (e) => {
+  if (avatarUploadBtn) {
+    avatarUploadBtn.addEventListener('click', triggerAvatarUpload);
+  }
+
+  if (avatarFileInput) {
+    avatarFileInput.addEventListener('change', (e) => {
       const file = e.target.files && e.target.files[0];
       if (file) {
+        if (!file.type.startsWith('image/')) {
+          showToast('Vui lòng chọn tệp hình ảnh hợp lệ');
+          return;
+        }
+
         const reader = new FileReader();
         reader.onload = (event) => {
-          avatarImage.src = event.target.result;
-          avatarImage.classList.remove('hidden');
-          avatarPlaceholder.classList.add('hidden');
-          
-          toggleUploadBtn.innerHTML = `
-            <i data-lucide="trash-2"></i>
-            <span>Để trống ảnh</span>
-          `;
-          if (typeof lucide !== 'undefined') lucide.createIcons();
-          showToast('Đã tải ảnh lên thành công!');
+          avatarImg.src = event.target.result;
+          avatarImg.classList.remove('hidden');
+          avatarMonogram.classList.add('hidden');
+          hasCustomPhoto = true;
+          if (avatarBtnText) avatarBtnText.textContent = 'Đổi / Gỡ ảnh';
+          showToast('Đã tải ảnh đại diện lên thành công!');
         };
         reader.readAsDataURL(file);
       }
     });
   }
 
-  function resetAvatarToBlank() {
-    avatarImage.src = '';
-    avatarImage.classList.add('hidden');
-    avatarPlaceholder.classList.remove('hidden');
-    avatarUpload.value = '';
-    
-    toggleUploadBtn.innerHTML = `
-      <i data-lucide="camera"></i>
-      <span>Thêm ảnh (Tùy chọn)</span>
-    `;
-    if (typeof lucide !== 'undefined') lucide.createIcons();
-    showToast('Đã để trống khung ảnh đại diện!');
-  }
-
   /* --------------------------------------------------
-     7. TOAST NOTIFICATION UTILITY
+     5. TOAST & CLIPBOARD HELPER FUNCTIONS
      -------------------------------------------------- */
-  let toastTimeout;
+  let toastTimer = null;
+
   function showToast(message) {
     const toast = document.getElementById('toast');
-    const toastMessage = document.getElementById('toastMessage');
-    
-    if (!toast || !toastMessage) return;
+    const toastMsg = document.getElementById('toastMessage');
 
-    toastMessage.textContent = message;
+    if (!toast || !toastMsg) return;
+
+    toastMsg.textContent = message;
     toast.classList.add('show');
 
-    clearTimeout(toastTimeout);
-    toastTimeout = setTimeout(() => {
+    if (toastTimer) clearTimeout(toastTimer);
+
+    toastTimer = setTimeout(() => {
       toast.classList.remove('show');
     }, 2800);
   }
 
-  function copyToClipboard(text, successMsg) {
-    if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(text).then(() => {
-        showToast(successMsg);
-      }).catch(() => {
-        fallbackCopy(text, successMsg);
-      });
+  function copyToClipboard(text, successMessage) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text)
+        .then(() => showToast(successMessage || 'Đã sao chép!'))
+        .catch(() => fallbackCopy(text, successMessage));
     } else {
-      fallbackCopy(text, successMsg);
+      fallbackCopy(text, successMessage);
     }
   }
 
-  function fallbackCopy(text, successMsg) {
-    const textArea = document.createElement('textarea');
-    textArea.value = text;
-    textArea.style.position = 'fixed';
-    textArea.style.left = '-999999px';
-    textArea.style.top = '-999999px';
-    document.body.appendChild(textArea);
-    textArea.focus();
-    textArea.select();
+  function fallbackCopy(text, successMessage) {
     try {
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      textArea.style.position = 'fixed';
+      textArea.style.left = '-9999px';
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
       document.execCommand('copy');
-      showToast(successMsg);
+      document.body.removeChild(textArea);
+      showToast(successMessage || 'Đã sao chép!');
     } catch (err) {
-      showToast('Không thể sao chép tự động!');
+      showToast('Không thể sao chép, vui lòng sao chép thủ công');
     }
-    document.body.removeChild(textArea);
   }
 });
