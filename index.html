@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="CV Lý Công Minh - Backend / Fullstack Developer Fresher. Sinh viên tốt nghiệp Đại học Công nghệ Thông tin - ĐHQG TP.HCM. GPA 3.6/4.0, AWS Certified.">
+  <meta name="keywords"
+    content="Lý Công Minh, Ly Cong Minh, CV, Resume, Backend Developer, Fullstack Developer, Spring Boot, NestJS, React, Node.js">
+  <meta name="author" content="Lý Công Minh">
+  <title>Lý Công Minh | Backend & Fullstack Developer - CV</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Ambient background glow elements -->
+  <div class="bg-glow bg-glow-1" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow-2" aria-hidden="true"></div>
+
+  <!-- Top Action Bar (hidden when printing) -->
+  <header class="action-bar no-print">
+    <div class="action-bar-container">
+      <div class="bar-brand">
+        <span class="brand-badge">CV ONLINE</span>
+        <span class="brand-name">Lý Công Minh</span>
+      </div>
+
+      <div class="bar-actions">
+        <!-- Status indicator -->
+        <div class="status-pill" title="Sẵn sàng nhận việc">
+          <span class="status-dot"></span>
+          <span>Sẵn sàng làm việc (Full-time / Remote)</span>
+        </div>
+
+        <!-- Action buttons -->
+        <button id="themeToggleBtn" class="btn btn-icon" aria-label="Đổi giao diện Sáng / Tối"
+          title="Đổi giao diện Sáng / Tối">
+          <i data-lucide="sun" class="sun-icon"></i>
+          <i data-lucide="moon" class="moon-icon"></i>
+        </button>
+
+        <button id="shareBtn" class="btn btn-secondary" title="Sao chép link CV">
+          <i data-lucide="share-2"></i>
+          <span>Chia sẻ</span>
+        </button>
+
+        <button id="printBtn" class="btn btn-primary" title="In hoặc lưu file PDF">
+          <i data-lucide="printer"></i>
+          <span>In / Xuất PDF</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Resume Canvas -->
+  <main class="resume-wrapper">
+    <div class="resume-page" id="cvContent">
+
+      <!-- LEFT SIDEBAR / COLUMN -->
+      <aside class="resume-sidebar">
+        <!-- AVATAR PLACEHOLDER (ĐỂ TRỐNG THEO YÊU CẦU) -->
+        <div class="avatar-container">
+          <div class="avatar-card" id="avatarCard">
+            <div class="avatar-placeholder" id="avatarPlaceholder">
+              <div class="avatar-icon-box">
+                <i data-lucide="user" class="avatar-user-icon"></i>
+              </div>
+              <div class="avatar-meta">
+                <span class="avatar-label">KHUNG ẢNH 3x4 / 4x6</span>
+                <span class="avatar-hint">(Để trống hoặc nhấp để chọn ảnh nếu cần)</span>
+              </div>
+            </div>
+            <!-- Optional image element if user ever chooses to upload one -->
+            <img id="avatarImage" class="avatar-img hidden" alt="Ảnh chân dung Lý Công Minh">
+            <input type="file" id="avatarUpload" accept="image/*" class="visually-hidden"
+              aria-label="Tải ảnh chân dung">
+          </div>
+          <button id="toggleUploadBtn" class="avatar-action-btn no-print" title="Tải ảnh lên hoặc xóa ảnh">
+            <i data-lucide="camera"></i>
+            <span>Thêm ảnh (Tùy chọn)</span>
+          </button>
+        </div>
+
+        <!-- CONTACT INFO -->
+        <section class="sidebar-section">
+          <h2 class="sidebar-title">
+            <i data-lucide="contact-2"></i>
+            <span>Thông tin liên hệ</span>
+          </h2>
+          <ul class="contact-list">
+            <li class="contact-item">
+              <div class="contact-icon"><i data-lucide="mail"></i></div>
+              <div class="contact-details">
+                <span class="contact-label">Email</span>
+                <a href="mailto:lycongminh@email.com" class="contact-value linkable">lycongminh@email.com</a>
+              </div>
+              <button class="copy-mini-btn no-print" data-copy="lycongminh@email.com" title="Sao chép Email">
+                <i data-lucide="copy"></i>
+              </button>
+            </li>
+
+            <li class="contact-item">
+              <div class="contact-icon"><i data-lucide="phone"></i></div>
+              <div class="contact-details">
+                <span class="contact-label">Điện thoại</span>
+                <a href="tel:+84901234567" class="contact-value linkable">+84 90 123 4567</a>
+              </div>
+              <button class="copy-mini-btn no-print" data-copy="+84901234567" title="Sao chép SĐT">
+                <i data-lucide="copy"></i>
+              </button>
+            </li>
+
+            <li class="contact-item">
+              <div class="contact-icon"><i data-lucide="map-pin"></i></div>
+              <div class="contact-details">
+                <span class="contact-label">Địa chỉ</span>
+                <span class="contact-value">TP. Hồ Chí Minh, Việt Nam</span>
+              </div>
+            </li>
+
+            <li class="contact-item">
+              <div class="contact-icon"><i data-lucide="globe"></i></div>
+              <div class="contact-details">
+                <span class="contact-label">Portfolio</span>
+                <a href="https://lycongminh.dev" target="_blank" rel="noopener noreferrer"
+                  class="contact-value linkable">lycongminh.dev</a>
+              </div>
+            </li>
+
+            <li class="contact-item">
+              <div class="contact-icon"><i data-lucide="github"></i></div>
+              <div class="contact-details">
+                <span class="contact-label">GitHub</span>
+                <a href="https://github.com/lycongminh" target="_blank" rel="noopener noreferrer"
+                  class="contact-value linkable">github.com/lycongminh</a>
+              </div>
+            </li>
+
+            <li class="contact-item">
+              <div class="contact-icon"><i data-lucide="linkedin"></i></div>
+              <div class="contact-details">
+                <span class="contact-label">LinkedIn</span>
+                <a href="https://linkedin.com/in/lycongminh" target="_blank" rel="noopener noreferrer"
+                  class="contact-value linkable">linkedin.com/in/lycongminh</a>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <!-- EDUCATION -->
+        <section class="sidebar-section">
+          <h2 class="sidebar-title">
+            <i data-lucide="graduation-cap"></i>
+            <span>Học vấn</span>
+          </h2>
+          <div class="education-card">
+            <div class="edu-time">2021 — 2025</div>
+            <h3 class="edu-school">Đại học Công nghệ Thông tin</h3>
+            <div class="edu-sub">ĐHQG TP. Hồ Chí Minh (UIT)</div>
+            <div class="edu-degree">Cử nhân Công nghệ Thông tin</div>
+            <div class="edu-score-badge">
+              <i data-lucide="award"></i>
+              <span>GPA: <strong>3.6 / 4.0</strong> (Hạng Khá)</span>
+            </div>
+            <p class="edu-desc"><strong>Chuyên ngành:</strong> Khoa học Máy tính / Kỹ thuật Phần mềm.</p>
+            <div class="edu-courses">
+              <span class="edu-chip">Cấu trúc DL & Giải thuật</span>
+              <span class="edu-chip">OOP</span>
+              <span class="edu-chip">Cơ sở dữ liệu</span>
+              <span class="edu-chip">Mạng & HĐH</span>
+              <span class="edu-chip">Thiết kế HT</span>
+              <span class="edu-chip">Cloud Computing</span>
+            </div>
+            <ul class="edu-highlights">
+              <li>Thành viên tích cực CLB Lập trình UIT</li>
+              <li>Top 10 cuộc thi Hackathon 2023</li>
+              <li>Mentor học thuật cho sinh viên khóa dưới</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- CERTIFICATIONS & AWARDS -->
+        <section class="sidebar-section">
+          <h2 class="sidebar-title">
+            <i data-lucide="shield-check"></i>
+            <span>Chứng chỉ & Giải thưởng</span>
+          </h2>
+          <ul class="cert-list">
+            <li class="cert-item">
+              <div class="cert-year">2024</div>
+              <div class="cert-info">
+                <strong>AWS Certified Cloud Practitioner</strong>
+                <span class="cert-code">CLF-C02 • Amazon Web Services</span>
+              </div>
+            </li>
+            <li class="cert-item">
+              <div class="cert-year">2024</div>
+              <div class="cert-info">
+                <strong>Oracle Certified Associate</strong>
+                <span class="cert-code">Java SE 11 Programmer</span>
+              </div>
+            </li>
+            <li class="cert-item highlight-award">
+              <div class="cert-year">2023</div>
+              <div class="cert-info">
+                <strong>Giải Nhất — Hackathon "Digital Transformation"</strong>
+                <span class="cert-code">ĐHQG TP.HCM (Hơn 50+ đội dự thi)</span>
+              </div>
+            </li>
+            <li class="cert-item">
+              <div class="cert-year">2023</div>
+              <div class="cert-info">
+                <strong>Top 10 Vietnam Student Coding Contest</strong>
+                <span class="cert-code">VSCC Quốc gia</span>
+              </div>
+            </li>
+            <li class="cert-item">
+              <div class="cert-year">2022</div>
+              <div class="cert-info">
+                <strong>Google Cloud Fundamentals</strong>
+                <span class="cert-code">Coursera & Google Cloud Training</span>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <!-- LANGUAGES & STATS -->
+        <section class="sidebar-section">
+          <h2 class="sidebar-title">
+            <i data-lucide="languages"></i>
+            <span>Ngoại ngữ & Khác</span>
+          </h2>
+          <div class="lang-box">
+            <div class="lang-row">
+              <div class="lang-header">
+                <span>Tiếng Việt</span>
+                <span class="lang-level">Bản ngữ (Native)</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 100%"></div>
+              </div>
+            </div>
+
+            <div class="lang-row">
+              <div class="lang-header">
+                <span>Tiếng Anh</span>
+                <span class="lang-level">IELTS 7.0 (L 7.5, R 7.5)</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 85%"></div>
+              </div>
+            </div>
+
+            <div class="lang-row">
+              <div class="lang-header">
+                <span>Tiếng Nhật</span>
+                <span class="lang-level">JLPT N5 (Đang học N4)</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 40%"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="quick-stats-grid">
+            <div class="stat-pill">
+              <span class="stat-num">1650</span>
+              <span class="stat-txt">Codeforces Specialist</span>
+            </div>
+            <div class="stat-pill">
+              <span class="stat-num">300+</span>
+              <span class="stat-txt">LeetCode Solved</span>
+            </div>
+            <div class="stat-pill">
+              <span class="stat-num">5K+</span>
+              <span class="stat-txt">Lượt đọc Blog Medium</span>
+            </div>
+          </div>
+        </section>
+      </aside>
+
+      <!-- RIGHT MAIN CONTENT -->
+      <section class="resume-main">
+
+        <!-- HEADER BANNER -->
+        <header class="profile-header">
+          <div class="profile-intro">
+            <div class="title-eyebrow">
+              <span class="pill-role">CURRICULUM VITAE</span>
+              <span class="pill-spec">Full-time / Remote / Hybrid</span>
+            </div>
+            <h1 class="candidate-name">LÝ CÔNG MINH</h1>
+            <p class="candidate-title">Backend Developer / Fullstack Developer</p>
+          </div>
+
+          <!-- SUMMARY STATEMENT -->
+          <div class="summary-box">
+            <div class="summary-quote-icon">
+              <i data-lucide="quote"></i>
+            </div>
+            <p class="summary-text">
+              Sinh viên năm cuối chuyên ngành Công nghệ Thông tin (ĐH Khoa học Máy tính / Kỹ thuật Phần mềm) với nền
+              tảng vững chắc về tư duy giải thuật, kiến trúc hệ thống backend và phát triển ứng dụng fullstack. Thành
+              thạo xây dựng RESTful API, Microservices với <strong>Java Spring Boot, NestJS, React/Next.js</strong>; tối
+              ưu cơ sở dữ liệu và triển khai container hóa Docker. Đam mê clean code, hướng tới xây dựng các giải pháp
+              phần mềm ổn định, hiệu năng cao và có khả năng mở rộng lớn.
+            </p>
+          </div>
+        </header>
+
+        <!-- TECHNICAL SKILLS -->
+        <section class="main-section">
+          <div class="section-heading">
+            <div class="heading-icon"><i data-lucide="cpu"></i></div>
+            <h2>Kỹ năng Chuyên môn & Công nghệ</h2>
+          </div>
+
+          <div class="skills-grid">
+            <!-- Backend -->
+            <div class="skill-category-card">
+              <div class="cat-header">
+                <i data-lucide="server"></i>
+                <h3>Backend & API</h3>
+              </div>
+              <div class="cat-tags">
+                <span class="tag tag-accent">Spring Boot</span>
+                <span class="tag tag-accent">Node.js (Express / NestJS)</span>
+                <span class="tag">RESTful API</span>
+                <span class="tag">GraphQL</span>
+                <span class="tag">WebSocket</span>
+                <span class="tag">JWT / OAuth2</span>
+              </div>
+            </div>
+
+            <!-- Languages -->
+            <div class="skill-category-card">
+              <div class="cat-header">
+                <i data-lucide="code-2"></i>
+                <h3>Ngôn ngữ Lập trình</h3>
+              </div>
+              <div class="cat-tags">
+                <span class="tag tag-accent">Java (SE 11/17)</span>
+                <span class="tag tag-accent">JavaScript / TypeScript</span>
+                <span class="tag">Python (FastAPI, Django)</span>
+                <span class="tag">SQL</span>
+                <span class="tag">C / C++</span>
+                <span class="tag">Go (cơ bản)</span>
+              </div>
+            </div>
+
+            <!-- Databases -->
+            <div class="skill-category-card">
+              <div class="cat-header">
+                <i data-lucide="database"></i>
+                <h3>Cơ sở Dữ liệu & Caching</h3>
+              </div>
+              <div class="cat-tags">
+                <span class="tag tag-accent">PostgreSQL</span>
+                <span class="tag">MySQL</span>
+                <span class="tag tag-accent">Redis (Distributed Caching/Lock)</span>
+                <span class="tag">MongoDB</span>
+                <span class="tag">SQLite</span>
+                <span class="tag">Indexing & Query Optimization</span>
+              </div>
+            </div>
+
+            <!-- Frontend -->
+            <div class="skill-category-card">
+              <div class="cat-header">
+                <i data-lucide="layout"></i>
+                <h3>Frontend Development</h3>
+              </div>
+              <div class="cat-tags">
+                <span class="tag tag-accent">React.js</span>
+                <span class="tag tag-accent">Next.js</span>
+                <span class="tag">HTML5 / CSS3</span>
+                <span class="tag">Tailwind CSS</span>
+                <span class="tag">Redux Toolkit</span>
+                <span class="tag">Responsive Web Design</span>
+              </div>
+            </div>
+
+            <!-- DevOps & Tools -->
+            <div class="skill-category-card">
+              <div class="cat-header">
+                <i data-lucide="container"></i>
+                <h3>DevOps, Cloud & Công cụ</h3>
+              </div>
+              <div class="cat-tags">
+                <span class="tag tag-accent">Docker</span>
+                <span class="tag">Kubernetes (cơ bản)</span>
+                <span class="tag tag-accent">Git & GitHub Actions</span>
+                <span class="tag">Linux CLI</span>
+                <span class="tag">Nginx</span>
+                <span class="tag">AWS Cloud Basics</span>
+              </div>
+            </div>
+
+            <!-- Kiến trúc & Phương pháp -->
+            <div class="skill-category-card">
+              <div class="cat-header">
+                <i data-lucide="git-branch"></i>
+                <h3>Kiến trúc & Phương pháp</h3>
+              </div>
+              <div class="cat-tags">
+                <span class="tag tag-accent">Microservices</span>
+                <span class="tag">RabbitMQ / Kafka</span>
+                <span class="tag">Clean Architecture & Design Patterns</span>
+                <span class="tag">Unit Testing (JUnit, Jest)</span>
+                <span class="tag">Agile / Scrum</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- WORK EXPERIENCE -->
+        <section class="main-section">
+          <div class="section-heading">
+            <div class="heading-icon"><i data-lucide="briefcase"></i></div>
+            <h2>Kinh nghiệm Làm việc</h2>
+          </div>
+
+          <div class="timeline">
+            <!-- Role 1 -->
+            <article class="timeline-item">
+              <div class="timeline-marker"></div>
+              <div class="timeline-header">
+                <div class="timeline-role-info">
+                  <h3 class="role-title">Backend Developer Intern</h3>
+                  <div class="company-badge">
+                    <span class="company-name">TechSolutions</span>
+                    <span class="company-dot">•</span>
+                    <span class="role-type">Thực tập sinh Backend</span>
+                  </div>
+                </div>
+                <div class="timeline-date">
+                  <i data-lucide="calendar"></i>
+                  <span>06/2023 — 08/2023</span>
+                </div>
+              </div>
+
+              <div class="timeline-body">
+                <p class="role-overview">
+                  Tham gia vào đội ngũ phát triển nền tảng CRM nội bộ cho doanh nghiệp khách hàng với kiến trúc RESTful
+                  service:
+                </p>
+                <ul class="role-bullets">
+                  <li>
+                    <strong>Phát triển & duy trì REST API:</strong> Xây dựng các module quản lý liên hệ, khách hàng tiềm
+                    năng và báo cáo doanh số bằng <em>Spring Boot & PostgreSQL</em>.
+                  </li>
+                  <li>
+                    <strong>Tối ưu hóa hiệu năng cơ sở dữ liệu:</strong> Phân tích execution plan, bổ sung index và
+                    refactor 3 câu truy vấn chậm (slow queries), giúp giảm độ trễ API trung bình từ <strong>450ms xuống
+                      còn 120ms (giảm ~73%)</strong>.
+                  </li>
+                  <li>
+                    <strong>Đảm bảo chất lượng mã nguồn:</strong> Viết Unit & Integration test với JUnit 5 và Mockito,
+                    nâng độ bao phủ kiểm thử (test coverage) từ <strong>60% lên 85%</strong>.
+                  </li>
+                  <li>
+                    <strong>Tiếp cận DevOps thực tế:</strong> Làm quen với việc đóng gói ứng dụng bằng Docker, quan sát
+                    hệ thống qua ELK Stack (Elasticsearch, Logstash, Kibana) và Datadog.
+                  </li>
+                </ul>
+
+                <div class="tech-pills">
+                  <span class="tech-tag">Java</span>
+                  <span class="tech-tag">Spring Boot</span>
+                  <span class="tech-tag">PostgreSQL</span>
+                  <span class="tech-tag">Docker</span>
+                  <span class="tech-tag">JUnit 5</span>
+                  <span class="tech-tag">Git</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- FEATURED PROJECTS -->
+        <section class="main-section">
+          <div class="section-heading-with-filter">
+            <div class="section-heading">
+              <div class="heading-icon"><i data-lucide="folder-git-2"></i></div>
+              <h2>Dự án Tiêu biểu</h2>
+            </div>
+
+            <!-- Project Filters (no-print) -->
+            <div class="filter-tabs no-print" id="projectFilter">
+              <button class="filter-btn active" data-filter="all">Tất cả (4)</button>
+              <button class="filter-btn" data-filter="fullstack">Fullstack</button>
+              <button class="filter-btn" data-filter="backend">Backend</button>
+              <button class="filter-btn" data-filter="frontend">Frontend/Tool</button>
+            </div>
+          </div>
+
+          <div class="projects-grid" id="projectsContainer">
+            <!-- Project 1 -->
+            <article class="project-card" data-category="fullstack">
+              <div class="project-header">
+                <div class="project-meta-top">
+                  <span class="project-type-badge badge-fullstack">Fullstack Microservices</span>
+                  <span class="project-time">03/2024 — 06/2024</span>
+                </div>
+                <h3 class="project-title">E-Commerce Platform — Hệ thống TMĐT Phân tán</h3>
+                <p class="project-desc">
+                  Hệ thống thương mại điện tử hoàn chỉnh theo kiến trúc Microservices gồm 5 dịch vụ độc lập: Auth,
+                  Product, Order, Payment, và Notification.
+                </p>
+              </div>
+
+              <div class="project-highlights">
+                <div class="highlight-item">
+                  <i data-lucide="check-circle-2"></i>
+                  <span>Triển khai Redis Cache giúp giảm <strong>70% thời gian phản hồi API</strong> cho trang chi tiết
+                    & danh mục sản phẩm.</span>
+                </div>
+                <div class="highlight-item">
+                  <i data-lucide="check-circle-2"></i>
+                  <span>Tối ưu chỉ mục (B-tree indexing) trong PostgreSQL, tăng tốc độ truy vấn đơn hàng lên
+                    <strong>3x</strong>.</span>
+                </div>
+                <div class="highlight-item">
+                  <i data-lucide="check-circle-2"></i>
+                  <span>Tích hợp cổng thanh toán quốc tế Stripe API, xây dựng pipeline CI/CD tự động deploy lên
+                    <strong>AWS ECS</strong> với Docker. Giám sát bằng Prometheus + Grafana.</span>
+                </div>
+              </div>
+
+              <div class="project-footer">
+                <div class="tech-stack-wrap">
+                  <span class="mini-tag">Next.js</span>
+                  <span class="mini-tag">NestJS</span>
+                  <span class="mini-tag">PostgreSQL</span>
+                  <span class="mini-tag">Redis</span>
+                  <span class="mini-tag">Docker</span>
+                  <span class="mini-tag">Stripe API</span>
+                  <span class="mini-tag">AWS ECS</span>
+                </div>
+                <div class="project-links no-print">
+                  <a href="https://github.com/lycongminh" target="_blank" rel="noopener noreferrer" class="link-btn"
+                    title="Xem mã nguồn">
+                    <i data-lucide="github"></i>
+                    <span>Source</span>
+                  </a>
+                  <a href="https://lycongminh.dev" target="_blank" rel="noopener noreferrer" class="link-btn primary"
+                    title="Xem demo">
+                    <i data-lucide="external-link"></i>
+                    <span>Live Demo</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 2 -->
+            <article class="project-card" data-category="fullstack">
+              <div class="project-header">
+                <div class="project-meta-top">
+                  <span class="project-type-badge badge-fullstack">Fullstack Realtime</span>
+                  <span class="project-time">09/2023 — 12/2023</span>
+                </div>
+                <h3 class="project-title">TaskFlow — Nền tảng Quản lý Dự án & Kanban Realtime</h3>
+                <p class="project-desc">
+                  Ứng dụng cộng tác quản lý công việc và dự án theo phương pháp Agile/Kanban với tính năng đồng bộ thời
+                  gian thực cho đội ngũ phân tán.
+                </p>
+              </div>
+
+              <div class="project-highlights">
+                <div class="highlight-item">
+                  <i data-lucide="check-circle-2"></i>
+                  <span>Tương tác thời gian thực: Bảng kéo thả (Drag-drop Kanban), bình luận và thông báo tức thì thông
+                    qua <strong>WebSocket (Socket.io)</strong>.</span>
+                </div>
+                <div class="highlight-item">
+                  <i data-lucide="check-circle-2"></i>
+                  <span>Hệ thống phân quyền Role-Based Access Control (Admin, Member, Viewer) cùng xác thực OAuth2
+                    (Google, GitHub).</span>
+                </div>
+                <div class="highlight-item">
+                  <i data-lucide="check-circle-2"></i>
+                  <span>Đảm bảo độ tin cậy với test coverage đạt <strong>85%</strong> (Jest) và kiểm thử luồng người
+                    dùng End-to-End với <strong>Cypress</strong>.</span>
+                </div>
+              </div>
+
+              <div class="project-footer">
+                <div class="tech-stack-wrap">
+                  <span class="mini-tag">React.js</span>
+                  <span class="mini-tag">Node.js</span>
+                  <span class="mini-tag">Express</span>
+                  <span class="mini-tag">MongoDB</span>
+                  <span class="mini-tag">Socket.io</span>
+                  <span class="mini-tag">Tailwind CSS</span>
+                  <span class="mini-tag">Cypress</span>
+                </div>
+                <div class="project-links no-print">
+                  <a href="https://github.com/lycongminh" target="_blank" rel="noopener noreferrer" class="link-btn"
+                    title="Xem mã nguồn">
+                    <i data-lucide="github"></i>
+                    <span>Source</span>
+                  </a>
+                  <a href="https://lycongminh.dev" target="_blank" rel="noopener noreferrer" class="link-btn primary"
+                    title="Xem demo">
+                    <i data-lucide="external-link"></i>
+                    <span>Live Demo</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 3 -->
+            <article class="project-card" data-category="backend">
+              <div class="project-header">
+                <div class="project-meta-top">
+                  <span class="project-type-badge badge-backend">Backend High-Concurrency</span>
+                  <span class="project-time">01/2023 — 04/2023</span>
+                </div>
+                <h3 class="project-title">Food Delivery API — Backend Nền tảng Giao đồ ăn</h3>
+                <p class="project-desc">
+                  Hệ thống backend chuyên xử lý đặt món, quản lý thực đơn, điều phối tài xế giao hàng và thanh toán trực
+                  tuyến.
+                </p>
+              </div>
+
+              <div class="project-highlights">
+                <div class="highlight-item">
+                  <i data-lucide="check-circle-2"></i>
+                  <span>Thiết kế kiến trúc RESTful API chuẩn OpenAPI/Swagger cho 4 modules: Nhà hàng, Thực đơn, Đơn hàng
+                    và Vận chuyển.</span>
+                </div>
+                <div class="highlight-item">
+                  <i data-lucide="check-circle-2"></i>
+                  <span>Giải quyết bài toán đồng thời cao (High-concurrency): Áp dụng <strong>Redis Distributed
+                      Lock</strong> chống tình trạng quá tải đặt món cùng lúc.</span>
+                </div>
+                <div class="highlight-item">
+                  <i data-lucide="check-circle-2"></i>
+                  <span>Tích hợp <strong>Apache Kafka</strong> cho kiến trúc xử lý sự kiện (Event-driven) và cổng thanh
+                    toán nội địa VNPay, MoMo.</span>
+                </div>
+              </div>
+
+              <div class="project-footer">
+                <div class="tech-stack-wrap">
+                  <span class="mini-tag">Java 17</span>
+                  <span class="mini-tag">Spring Boot</span>
+                  <span class="mini-tag">PostgreSQL</span>
+                  <span class="mini-tag">Redis Lock</span>
+                  <span class="mini-tag">Apache Kafka</span>
+                  <span class="mini-tag">VNPay / MoMo</span>
+                </div>
+                <div class="project-links no-print">
+                  <a href="https://github.com/lycongminh" target="_blank" rel="noopener noreferrer" class="link-btn"
+                    title="Xem mã nguồn">
+                    <i data-lucide="github"></i>
+                    <span>Source</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 4 -->
+            <article class="project-card" data-category="frontend">
+              <div class="project-header">
+                <div class="project-meta-top">
+                  <span class="project-type-badge badge-tool">Interactive Tool</span>
+                  <span class="project-time">06/2022 — 08/2022</span>
+                </div>
+                <h3 class="project-title">Algorithm Visualizer — Công cụ Trực quan hóa Thuật toán</h3>
+                <p class="project-desc">
+                  Trang web tương tác trực quan mô phỏng từng bước hoạt động của hơn 15+ thuật toán kinh điển nhằm hỗ
+                  trợ sinh viên học cấu trúc dữ liệu & giải thuật.
+                </p>
+              </div>
+
+              <div class="project-highlights">
+                <div class="highlight-item">
+                  <i data-lucide="check-circle-2"></i>
+                  <span>Mô phỏng sinh động các nhóm giải thuật: Sắp xếp (QuickSort, MergeSort), Tìm đường (Dijkstra, A*
+                    Pathfinding), Đồ thị và Quy hoạch động.</span>
+                </div>
+                <div class="highlight-item">
+                  <i data-lucide="check-circle-2"></i>
+                  <span>Tùy chỉnh tốc độ thực thi, tạm dừng, tua lại từng bước và hiển thị độ phức tạp thời gian/không
+                    gian trực tiếp.</span>
+                </div>
+              </div>
+
+              <div class="project-footer">
+                <div class="tech-stack-wrap">
+                  <span class="mini-tag">React</span>
+                  <span class="mini-tag">TypeScript</span>
+                  <span class="mini-tag">D3.js</span>
+                  <span class="mini-tag">Vite</span>
+                  <span class="mini-tag">Canvas API</span>
+                </div>
+                <div class="project-links no-print">
+                  <a href="https://github.com/lycongminh" target="_blank" rel="noopener noreferrer" class="link-btn"
+                    title="Xem mã nguồn">
+                    <i data-lucide="github"></i>
+                    <span>Source</span>
+                  </a>
+                  <a href="https://lycongminh.dev" target="_blank" rel="noopener noreferrer" class="link-btn primary"
+                    title="Xem demo">
+                    <i data-lucide="external-link"></i>
+                    <span>Live Demo</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- EXTRA ACTIVITIES & OBJECTIVES -->
+        <section class="main-section">
+          <div class="section-heading">
+            <div class="heading-icon"><i data-lucide="sparkles"></i></div>
+            <h2>Hoạt động & Đóng góp Cộng đồng</h2>
+          </div>
+
+          <div class="activities-grid">
+            <div class="activity-box">
+              <div class="activity-top">
+                <i data-lucide="git-pull-request"></i>
+                <strong>Open Source Contributor</strong>
+              </div>
+              <p>Đóng góp pull request xử lý bug và cải thiện documentation cho 3+ dự án mã nguồn mở trên GitHub.</p>
+            </div>
+
+            <div class="activity-box">
+              <div class="activity-top">
+                <i data-lucide="pen-tool"></i>
+                <strong>Technical Blog Writer</strong>
+              </div>
+              <p>Viết 15+ bài chia sẻ chuyên sâu về Java Spring, tối ưu SQL và kiến trúc Microservices trên Medium với
+                5.000+ lượt xem.</p>
+            </div>
+
+            <div class="activity-box">
+              <div class="activity-top">
+                <i data-lucide="heart-handshake"></i>
+                <strong>Code for Vietnam Mentor</strong>
+              </div>
+              <p>Tình nguyện viên hướng dẫn cơ bản về lập trình web và tư duy thuật toán cho các bạn học sinh sinh viên
+                mới bắt đầu.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- FOOTER / SIGNATURE (Print & Web) -->
+        <footer class="cv-footer">
+          <div class="footer-notes">
+            <span>• Cập nhật mới nhất: Tháng 10/2024</span>
+            <span>• Cam kết thông tin trung thực và chính xác</span>
+          </div>
+          <div class="footer-sign">
+            <span>Ứng viên</span>
+            <strong>Lý Công Minh</strong>
+          </div>
+        </footer>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- Toast Notification Container -->
+  <div id="toast" class="toast" role="alert" aria-live="assertive">
+    <div class="toast-content">
+      <i data-lucide="check" class="toast-icon"></i>
+      <span id="toastMessage">Đã sao chép!</span>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+
+</html>
