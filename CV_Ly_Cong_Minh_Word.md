@@ -84,18 +84,19 @@ Sinh viên năm cuối chuyên ngành Công nghệ thông tin có nền tảng t
 
 ---
 
-### Dự án 2: Website Bán Linh Kiện Máy Tính
-- **Thời gian thực hiện:** [CẦN BỔ SUNG THỜI GIAN]
-- **Tình trạng:** [Dự án Thực tập / Đồ án]
-- **Mục tiêu:** Xây dựng website thương mại điện tử cơ bản cho phép khách hàng tra cứu và chọn mua linh kiện máy tính (CPU, RAM, VGA, Ổ cứng...).
-- **Công nghệ sử dụng:** HTML5, CSS3, JavaScript, MySQL hoặc SQLite.
+### Dự án 2: Nam Nguyễn PC — Website Thương Mại Điện Tử Linh Kiện PC & Server
+- **Thời gian thực hiện:** 06/2026 — 08/2026
+- **Tình trạng:** [Dự án Thực tập Doanh nghiệp / Full Stack Web]
+- **Mục tiêu:** Xây dựng nền tảng thương mại điện tử trọn gói (Storefront & Admin Dashboard) kinh doanh linh kiện PC Gaming, Server doanh nghiệp với hiệu năng cao và bảo mật.
+- **Công nghệ sử dụng:** Node.js, Express.js RESTful API, MySQL (Clever Cloud), HTML5, CSS3, JavaScript ES6+, JWT Authentication, Render CI/CD.
 - **Chức năng chính:**
-  1. Hiển thị danh mục sản phẩm kèm hình ảnh, giá và thông số kỹ thuật.
-  2. Phân loại sản phẩm theo danh mục và hỗ trợ thanh tìm kiếm nhanh.
-  3. Tính năng giỏ hàng (Thêm / Xóa / Tăng giảm số lượng sản phẩm).
-  4. Form nhập thông tin thanh toán với tính năng kiểm tra lỗi nhập liệu.
-- **Vai trò & Phần việc đảm nhận:** Thiết kế giao diện người dùng, lập trình xử lý giỏ hàng bằng JavaScript và thiết kế cấu trúc bảng cơ sở dữ liệu.
-- **Link mã nguồn GitHub:** https://github.com/3Blue-1Brown
+  1. **Storefront:** Tìm kiếm sản phẩm thời gian thực (Live Search Sync), bộ lọc thông số kỹ thuật đa tầng, giỏ hàng LocalStorage.
+  2. **Công cụ PC Builder:** Tự phối ghép cấu hình máy tính theo nhu cầu, tự động tính tổng chi phí và xuất mã QR báo giá Zalo.
+  3. **Admin Dashboard:** Đăng nhập bảo mật JWT, thống kê tổng doanh thu & đơn hàng, quản lý sản phẩm CRUD, banner khuyến mãi động và nhật ký hoạt động (Activity Logs).
+  4. **Tối ưu hóa:** Nén dữ liệu Gzip/Brotli giảm 70% kích thước payload, kết nối MySQL Connection Pool có đánh chỉ mục (Index).
+- **Phần việc đảm nhận:** Xây dựng toàn bộ hệ thống API Backend, thiết kế cơ sở dữ liệu MySQL và lập trình giao diện người dùng responsive.
+- **Demo trực tiếp:** https://pcnamnguyen.onrender.com
+- **Mã nguồn GitHub:** https://github.com/pcnamnguyen/pcnamnguyen
 
 ---
 
