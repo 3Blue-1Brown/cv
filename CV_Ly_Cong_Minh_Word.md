@@ -51,8 +51,9 @@ Sinh viên năm cuối chuyên ngành Công nghệ thông tin có nền tảng t
 - **Quản lý mã nguồn:** Thành thạo các thao tác Git cơ bản (`clone`, `commit`, `push`, `pull`, tạo branch).
 - **Kiến thức hệ thống:** Cài đặt hệ điều hành Windows, cài đặt môi trường lập trình (Node.js, JDK, XAMPP, CMD/Terminal), xử lý sự cố phần mềm và mạng cơ bản.
 
-### Kỹ năng mềm:
-- Khả năng tự học, chủ động tìm kiếm giải pháp và đọc hiểu tài liệu kỹ thuật tiếng Anh.
+### Kỹ năng mềm & Ngoại ngữ:
+- **Ngoại ngữ:** Tiếng Anh — **IELTS 9.0** (Thành thạo giao tiếp quốc tế & nghiên cứu chuyên sâu tài liệu kỹ thuật).
+- Khả năng tự học, chủ động tìm kiếm giải pháp kỹ thuật trên Stack Overflow / GitHub.
 - Tư duy logic, phân tích vấn đề và tinh thần trách nhiệm, phối hợp làm việc nhóm tốt.
 
 ---
@@ -101,6 +102,6 @@ Sinh viên năm cuối chuyên ngành Công nghệ thông tin có nền tảng t
 ---
 
 ## 6. CHỨNG CHỈ VÀ HOẠT ĐỘNG
+- **Chứng chỉ ngoại ngữ & chuyên môn:** Chứng chỉ Tiếng Anh Quốc tế **IELTS 9.0** (Overall Band Score 9.0).
 - **Khóa học nâng cao:** Tham gia các khóa học lập trình Web cơ bản và thuật toán trực tuyến (FreeCodeCamp, Coursera...).
-- **Chứng chỉ chuyên môn:** [CẦN BỔ SUNG NẾU CÓ: Chứng chỉ Tin học, Tiếng Anh TOEIC/IELTS, Khóa học Web...]
 - **Hoạt động ngoại khóa:** [CẦN BỔ SUNG NẾU CÓ: Tham gia CLB Tin học, Hoạt động tình nguyện...]
